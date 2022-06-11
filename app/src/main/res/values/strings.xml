@@ -12,12 +12,15 @@
     <!-- Strings related to login -->
     <string name="login_text">Prihlásiť sa</string>
     <string name="signup_text">Registrovať sa</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="priezvisko">Priezvisko</string>
-    <string name="datum_narodenia">Datum narodenia</string>
+    <string name="datum_narodenia">Dátum narodenia</string>
     <string name="tudijn_program">Študijný program</string>
     <string name="heslo">Heslo</string>
+    <string name="email">Email</string>
+    <string name="meno">Meno</string>
 
 
 </resources>
