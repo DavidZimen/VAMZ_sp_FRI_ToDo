@@ -25,7 +25,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintWidth_percent=".375"
-            app:layout_constraintVertical_bias=".25"/>
+            app:layout_constraintVertical_bias=".2"/>
 
         <EditText
             android:id="@+id/priezvisko"
@@ -41,7 +41,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintWidth_percent=".375"
-            app:layout_constraintVertical_bias=".25"/>
+            app:layout_constraintVertical_bias=".2"/>
 
         <EditText
             android:id="@+id/datum"
@@ -50,7 +50,7 @@
             android:layout_margin="10dp"
             android:hint="@string/datum_narodenia"
             android:paddingLeft="10dp"
-            android:paddingTop="10dp"
+            android:paddingTop="20dp"
             android:paddingBottom="10dp"
             app:layout_constraintEnd_toStartOf="@+id/guideline4"
             app:layout_constraintStart_toStartOf="@+id/guideline2"
@@ -66,22 +66,25 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:hint="@string/os_cislo"
+            android:inputType="number"
             android:paddingLeft="10dp"
-            android:paddingTop="10dp"
+            android:paddingTop="20dp"
             android:paddingBottom="10dp"
             app:layout_constraintEnd_toStartOf="@+id/guideline2"
             app:layout_constraintStart_toStartOf="@+id/guideline3"
             app:layout_constraintTop_toBottomOf="@id/meno"
             app:layout_constraintWidth_percent=".375" />
 
-        <EditText
+        <AutoCompleteTextView
             android:id="@+id/program"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
+            android:dropDownHeight="200dp"
+            android:focusable="false"
             android:hint="@string/tudijn_program"
             android:paddingLeft="10dp"
-            android:paddingTop="10dp"
+            android:paddingTop="20dp"
             android:paddingBottom="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -94,7 +97,7 @@
             android:layout_height="wrap_content"
             android:hint="@string/email"
             android:paddingLeft="10dp"
-            android:paddingTop="10dp"
+            android:paddingTop="20dp"
             android:paddingBottom="10dp"
             android:layout_margin="10dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -109,12 +112,28 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:hint="@string/heslo"
+            android:inputType="textPassword"
             android:paddingLeft="10dp"
-            android:paddingTop="10dp"
+            android:paddingTop="20dp"
             android:paddingBottom="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/email"
+            app:layout_constraintWidth_percent=".75" />
+
+        <EditText
+            android:id="@+id/pass_conf"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:hint="@string/heslo"
+            android:inputType="textPassword"
+            android:paddingLeft="10dp"
+            android:paddingTop="20dp"
+            android:paddingBottom="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/pass"
             app:layout_constraintWidth_percent=".75" />
 
         <Button
@@ -153,6 +172,86 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             app:layout_constraintGuide_percent="0.875" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/meno"
+            android:textStyle="bold"
+            android:paddingLeft="10dp"
+            app:layout_constraintEnd_toStartOf="@+id/guideline2"
+            app:layout_constraintStart_toStartOf="@+id/guideline3"
+            app:layout_constraintTop_toBottomOf="@id/meno" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/priezvisko"
+            android:textStyle="bold"
+            android:paddingLeft="10dp"
+            app:layout_constraintEnd_toStartOf="@+id/guideline4"
+            app:layout_constraintStart_toStartOf="@+id/guideline2"
+            app:layout_constraintTop_toBottomOf="@id/priezvisko" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/datum_narodenia"
+            android:textStyle="bold"
+            android:paddingLeft="10dp"
+            app:layout_constraintEnd_toStartOf="@+id/guideline4"
+            app:layout_constraintStart_toStartOf="@+id/guideline2"
+            app:layout_constraintTop_toBottomOf="@id/datum" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/os_cislo"
+            android:textStyle="bold"
+            android:paddingLeft="10dp"
+            app:layout_constraintEnd_toStartOf="@+id/guideline2"
+            app:layout_constraintStart_toStartOf="@+id/guideline3"
+            app:layout_constraintTop_toBottomOf="@id/os_cislo" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/tudijn_program"
+            android:textStyle="bold"
+            android:paddingLeft="10dp"
+            app:layout_constraintEnd_toStartOf="@+id/guideline2"
+            app:layout_constraintStart_toStartOf="@+id/guideline3"
+            app:layout_constraintTop_toBottomOf="@id/program" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/email"
+            android:textStyle="bold"
+            android:paddingLeft="10dp"
+            app:layout_constraintEnd_toStartOf="@+id/guideline2"
+            app:layout_constraintStart_toStartOf="@+id/guideline3"
+            app:layout_constraintTop_toBottomOf="@id/email" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+            android:text="@string/heslo"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/guideline2"
+            app:layout_constraintStart_toStartOf="@+id/guideline3"
+            app:layout_constraintTop_toBottomOf="@id/pass" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+            android:text="@string/pass_conf"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/guideline2"
+            app:layout_constraintStart_toStartOf="@+id/guideline3"
+            app:layout_constraintTop_toBottomOf="@id/pass_conf" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

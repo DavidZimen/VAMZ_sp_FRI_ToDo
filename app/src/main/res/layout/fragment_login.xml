@@ -8,30 +8,32 @@
     tools:context=".app_logging.LoginFragment">
 
     <EditText
-        android:id="@+id/email"
+        android:id="@+id/os_cislo"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintWidth_percent=".75"
-        app:layout_constraintVertical_bias=".25"
-        android:hint="Email"
+        android:inputType="number"
+        android:hint="@string/os_cislo"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
         android:paddingLeft="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintWidth_percent=".75"
+        app:layout_constraintVertical_bias=".2"/>
 
     <EditText
         android:id="@+id/pass"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintWidth_percent=".75"
-        android:hint="Heslo"
-        android:paddingTop="10dp"
+        android:hint="@string/heslo"
+        android:inputType="textPassword"
+        android:paddingTop="20dp"
         android:paddingBottom="10dp"
         android:paddingLeft="10dp"
-        app:layout_constraintTop_toBottomOf="@id/email"
+        app:layout_constraintWidth_percent=".75"
+        app:layout_constraintTop_toBottomOf="@id/os_cislo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_margin="10dp"/>
@@ -48,7 +50,36 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.752"
+        app:layout_constraintVertical_bias="0.8"
         app:layout_constraintWidth_percent="0.75" />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:text="@string/os_cislo"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/os_cislo"
+        app:layout_constraintTop_toBottomOf="@id/os_cislo" />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:text="@string/heslo"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/pass"
+        app:layout_constraintTop_toBottomOf="@id/pass" />
+
+    <TextView
+        android:id="@+id/error_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:textStyle="bold"
+        android:textColor="@color/red"
+        android:layout_marginTop="30dp"
+        app:layout_constraintStart_toStartOf="@+id/pass"
+        app:layout_constraintTop_toBottomOf="@id/pass" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

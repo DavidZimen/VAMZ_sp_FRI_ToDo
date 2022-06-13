@@ -10,7 +10,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.VAMZ_sp_FRI_ToDo">
-
         <activity
             android:name=".app_logging.LoggingActivity"
             android:exported="true"
@@ -22,14 +21,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".app_logging.ControlActivity"
             android:exported="true"
             android:label="@string/title_activity_control"
             android:theme="@style/Theme.VAMZ_sp_FRI_ToDo.NoActionBar"
-            tools:ignore="DuplicateActivity">
-        </activity>
-
+            tools:ignore="DuplicateActivity"></activity>
     </application>
+
 </manifest>
