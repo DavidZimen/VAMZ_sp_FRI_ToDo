@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/welcomeFragment"
-        android:name="com.example.vamz_sp_fri_todo.login.WelcomeFragment"
+        android:name="com.example.vamz_sp_fri_todo.app_logging.WelcomeFragment"
         android:label="WelcomeFragment"
         tools:layout="@layout/fragment_welcome">
         <action
@@ -24,12 +24,12 @@
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.example.vamz_sp_fri_todo.login.LoginFragment"
+        android:name="com.example.vamz_sp_fri_todo.app_logging.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" />
     <fragment
         android:id="@+id/registerFragment"
-        android:name="com.example.vamz_sp_fri_todo.login.RegisterFragment"
+        android:name="com.example.vamz_sp_fri_todo.app_logging.RegisterFragment"
         android:label="fragment_register"
         tools:layout="@layout/fragment_register" />
 </navigation>

@@ -1,9 +1,7 @@
 <resources>
-    <string name="app_name">VAMZ_sp_FRI_ToDo</string>
+    <string name="app_name">FRI ToDo</string>
     <string name="action_settings">Settings</string>
     <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
 
@@ -16,11 +14,13 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="priezvisko">Priezvisko</string>
-    <string name="datum_narodenia">Dátum narodenia</string>
+    <string name="datum_narodenia">Dátum</string>
     <string name="tudijn_program">Študijný program</string>
     <string name="heslo">Heslo</string>
     <string name="email">Email</string>
     <string name="meno">Meno</string>
+    <string name="os_cislo">Osobné číslo</string>
+    <string name="title_activity_control">ControlActivity</string>
 
 
 </resources>

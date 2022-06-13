@@ -4,12 +4,13 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.example.vamz_sp_fri_todo.database.data_classes.StudentDC
 
 /**
  * Abstraktná trieda pre databázu Studentov.
  * Vytvorí jednu inštanciu tabuľky, ktorú bude následne sprístupňovať pre účely aplikácie.
  */
-@Database(entities = [StudentDataClass::class], version = 1, exportSchema = false)
+@Database(entities = [StudentDC::class], version = 1, exportSchema = false)
 abstract class StudentDatabase : RoomDatabase() {
 
     abstract val studentDatabaseDao: StudentDatabaseDao
@@ -27,7 +28,7 @@ abstract class StudentDatabase : RoomDatabase() {
                     instance = Room.databaseBuilder(
                         context.applicationContext,
                         StudentDatabase::class.java,
-                        "app_database"
+                        "to_do_db"
                     )
                         .fallbackToDestructiveMigration()
                         .build()

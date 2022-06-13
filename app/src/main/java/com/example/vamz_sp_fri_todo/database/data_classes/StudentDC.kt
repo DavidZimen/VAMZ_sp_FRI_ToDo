@@ -1,12 +1,12 @@
-package com.example.vamz_sp_fri_todo.database
+package com.example.vamz_sp_fri_todo.database.data_classes
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity(tableName = "users_table")
-data class StudentDataClass (
-    @PrimaryKey(autoGenerate = false)
+data class StudentDC (
+    @PrimaryKey
     var id: Int = 0,
 
     @ColumnInfo(name = "mail")

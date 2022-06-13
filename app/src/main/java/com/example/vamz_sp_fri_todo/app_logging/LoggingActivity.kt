@@ -1,4 +1,4 @@
-package com.example.vamz_sp_fri_todo.login
+package com.example.vamz_sp_fri_todo.app_logging
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

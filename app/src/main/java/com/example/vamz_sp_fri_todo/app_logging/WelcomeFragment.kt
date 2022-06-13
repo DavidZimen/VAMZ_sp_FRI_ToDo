@@ -1,14 +1,12 @@
-package com.example.vamz_sp_fri_todo.login
+package com.example.vamz_sp_fri_todo.app_logging
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import androidx.navigation.Navigation
 import com.example.vamz_sp_fri_todo.R
-import androidx.navigation.findNavController
 import kotlinx.android.synthetic.main.fragment_register.view.*
 import kotlinx.android.synthetic.main.fragment_welcome.view.*
 

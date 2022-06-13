@@ -12,7 +12,7 @@
         android:theme="@style/Theme.VAMZ_sp_FRI_ToDo">
 
         <activity
-            android:name=".login.LoggingActivity"
+            android:name=".app_logging.LoggingActivity"
             android:exported="true"
             android:theme="@style/Theme.VAMZ_sp_FRI_ToDo.NoActionBar"
             tools:ignore="DuplicateActivity">
@@ -22,6 +22,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-    </application>
 
+        <activity
+            android:name=".app_logging.ControlActivity"
+            android:exported="true"
+            android:label="@string/title_activity_control"
+            android:theme="@style/Theme.VAMZ_sp_FRI_ToDo.NoActionBar"
+            tools:ignore="DuplicateActivity">
+        </activity>
+
+    </application>
 </manifest>

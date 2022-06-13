@@ -1,4 +1,4 @@
-package com.example.vamz_sp_fri_todo.login
+package com.example.vamz_sp_fri_todo.app_logging
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
