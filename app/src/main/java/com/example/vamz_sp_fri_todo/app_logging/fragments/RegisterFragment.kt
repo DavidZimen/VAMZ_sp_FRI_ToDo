@@ -1,4 +1,4 @@
-package com.example.vamz_sp_fri_todo.app_logging
+package com.example.vamz_sp_fri_todo.app_logging.fragments
 
 import android.annotation.SuppressLint
 import android.app.DatePickerDialog
@@ -13,7 +13,11 @@ import android.widget.EditText
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import com.example.vamz_sp_fri_todo.R
+import com.example.vamz_sp_fri_todo.app_logging.ControlActivity
+import com.example.vamz_sp_fri_todo.app_logging.HelperClass
+import com.example.vamz_sp_fri_todo.app_logging.LoggingViewModel
 import com.example.vamz_sp_fri_todo.database.data_classes.StudentDC
+import com.example.vamz_sp_fri_todo.mainFuncionality.MainFuncionalityActivity
 import com.example.vamz_sp_fri_todo.student.Student
 import kotlinx.android.synthetic.main.fragment_register.view.*
 import java.util.*
@@ -66,7 +70,7 @@ class RegisterFragment : Fragment() {
                 if (helper.checkEmail(editTextList.last())) {
 
                     //kontrola zhody zadanych hesiel
-                    if (helper.checkPassword(editTextList[2], editTextList[3])) {
+                    if (helper.checkPassword(view.pass, view.pass_conf)) {
 
                         //ak uz dany student neexistuje tak zaregistruje
                         viewModel.getStudent(editTextList[4].text.toString().toInt())
@@ -78,7 +82,7 @@ class RegisterFragment : Fragment() {
 
                             //vytvorenie instancie studenta a jeho nasledne pridanie do databazy
                             val student = StudentDC()
-                            student.id = osCislo
+                            student.osCislo = osCislo
                             student.mail = view.email.text.toString()
                             student.name = view.meno.text.toString()
                             student.surname = view.priezvisko.text.toString()
@@ -89,7 +93,7 @@ class RegisterFragment : Fragment() {
                             //pridanie studenta
                             viewModel.insertStudent(student)
 
-                            val intent = Intent(this.context, ControlActivity::class.java)
+                            val intent = Intent(this.context, MainFuncionalityActivity::class.java)
                             val passedStudent = Student(student)
                             intent.putExtra("student", passedStudent)
                             intent.putExtra("datum", view.datum.text.toString())

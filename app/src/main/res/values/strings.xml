@@ -25,6 +25,7 @@
     <string name="first_fragment_label">First Fragment</string>
     <string name="second_fragment_label">Second Fragment</string>
     <string name="pass_conf">Potvrdenie hesla</string>
+    <string name="menu_header">FRI ToDo List app</string>
 
     <string-array name="Programy">
         <item>Informatika</item>
@@ -34,5 +35,7 @@
         <item>Sieťové technológie</item>
     </string-array>
 
-
+    <!-- Resources pre action bar animacie -->
+    <string name="drawer_open">Open navigation drawer</string>
+    <string name="drawer_close">Close navigation drawer</string>
 </resources>

@@ -11,7 +11,7 @@ import java.util.*
  */
 class Student(studentDC: StudentDC) : Serializable {
     init {
-        studentDC.id.also { osCislo_ = it }
+        studentDC.osCislo.also { osCislo_ = it }
         studentDC.mail.also { mail_ = it}
         studentDC.password.also { password_ = it }
         studentDC.name.also { name_ = it }

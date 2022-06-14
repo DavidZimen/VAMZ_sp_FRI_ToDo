@@ -32,7 +32,7 @@ class ControlActivity : AppCompatActivity() {
 
         viewModel.student.observe(this, Observer {
             if (it != null) {
-                binding.tw1.text = it.id.toString()
+                binding.tw1.text = it.osCislo.toString()
                 binding.tw2.text = it.name
                 binding.tw3.text = it.surname
                 binding.tw4.text = it.mail

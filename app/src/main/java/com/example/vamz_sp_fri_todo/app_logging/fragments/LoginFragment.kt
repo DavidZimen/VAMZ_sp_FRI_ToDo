@@ -1,4 +1,4 @@
-package com.example.vamz_sp_fri_todo.app_logging
+package com.example.vamz_sp_fri_todo.app_logging.fragments
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -9,10 +9,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import com.example.vamz_sp_fri_todo.R
-import com.example.vamz_sp_fri_todo.database.data_classes.StudentDC
+import com.example.vamz_sp_fri_todo.app_logging.ControlActivity
+import com.example.vamz_sp_fri_todo.app_logging.HelperClass
+import com.example.vamz_sp_fri_todo.app_logging.LoggingViewModel
 import com.example.vamz_sp_fri_todo.student.Student
 import kotlinx.android.synthetic.main.fragment_login.view.*
-import kotlinx.android.synthetic.main.fragment_register.view.*
 import kotlinx.android.synthetic.main.fragment_register.view.os_cislo
 import kotlinx.android.synthetic.main.fragment_register.view.pass
 

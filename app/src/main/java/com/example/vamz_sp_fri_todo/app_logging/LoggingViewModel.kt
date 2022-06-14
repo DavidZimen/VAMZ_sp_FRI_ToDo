@@ -15,7 +15,7 @@ class LoggingViewModel(application: Application) : AndroidViewModel(application)
 
     fun insertStudent(student: StudentDC) {
         viewModelScope.launch {
-            db.insert(student)
+            db.insertStudent(student)
         }
     }
 
@@ -27,7 +27,7 @@ class LoggingViewModel(application: Application) : AndroidViewModel(application)
 
     fun clear() {
         viewModelScope.launch {
-            db.clear()
+            db.clearStudents()
         }
     }
 
