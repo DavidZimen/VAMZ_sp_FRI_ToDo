@@ -30,7 +30,7 @@ class HelperClass {
 
         for (editText in editTexts) {
             if (editText.text.toString().isEmpty()) {
-                editText.setError("Pole nesmie byť prázdne.")
+                editText.error = "Pole nesmie byť prázdne."
                 counter++
             }
         }
@@ -55,7 +55,7 @@ class HelperClass {
      */
     fun checkPassword(pass1: EditText, pass2: EditText): Boolean {
         return if (pass1.text.toString() != pass2.text.toString()) {
-            pass2.setError("Heslá sa musia zhodovať !")
+            pass2.error = "Heslá sa musia zhodovať !"
             pass2.setTextColor(Color.RED)
             false
         } else {
