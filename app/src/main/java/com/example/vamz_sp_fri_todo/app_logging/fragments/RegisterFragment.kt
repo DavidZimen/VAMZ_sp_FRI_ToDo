@@ -13,8 +13,7 @@ import android.widget.EditText
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import com.example.vamz_sp_fri_todo.R
-import com.example.vamz_sp_fri_todo.app_logging.ControlActivity
-import com.example.vamz_sp_fri_todo.app_logging.HelperClass
+import com.example.vamz_sp_fri_todo.app_logging.LoginHelper
 import com.example.vamz_sp_fri_todo.app_logging.LoggingViewModel
 import com.example.vamz_sp_fri_todo.database.data_classes.StudentDC
 import com.example.vamz_sp_fri_todo.mainFuncionality.MainFuncionalityActivity
@@ -36,7 +35,7 @@ class RegisterFragment : Fragment() {
         savedInstanceState: Bundle?): View?
     {
         val view = inflater.inflate(R.layout.fragment_register, container, false)
-        val helper = HelperClass()
+        val helper = LoginHelper()
 
         viewModel = this.activity?.let { LoggingViewModel(it.application) }!!
 
@@ -99,7 +98,7 @@ class RegisterFragment : Fragment() {
                             intent.putExtra("datum", view.datum.text.toString())
                             startActivity(intent)
                         } else {
-                            editTextList[4].setError("Študent s daným číslom existuje. Prihláste sa alebo zadajne iné číslo.")
+                            editTextList[4].error = "Študent s daným číslom existuje. Prihláste sa alebo zadajne iné číslo."
                         }
                     }
                 }
@@ -143,9 +142,11 @@ class RegisterFragment : Fragment() {
                     }
                 }
 
+
             //vytvorenie a zobrazenie dialogu pre vyber datumu
-            activity?.let { it1 -> DatePickerDialog(it1, dateSetListener, year, month, day) }
-                ?.show()
+            val dpd = activity?.let { it1 -> DatePickerDialog(it1, R.style.MyDatePickerDialogTheme,dateSetListener, year, month, day) }
+            dpd?.datePicker?.maxDate = System.currentTimeMillis()
+            dpd?.show()
         }
     }
 }

@@ -17,5 +17,5 @@ data class StudentWithLists (
         entityColumn = "student"
     )
 
-    val lists: List<ToDoListDC>
+    val lists: List<ToDoListDC?>
     )

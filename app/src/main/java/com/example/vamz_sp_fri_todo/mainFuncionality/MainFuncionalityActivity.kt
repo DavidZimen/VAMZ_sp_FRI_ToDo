@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
 import com.example.vamz_sp_fri_todo.R
+import com.example.vamz_sp_fri_todo.student.Student
 import com.google.android.material.navigation.NavigationView
 
 class MainFuncionalityActivity : AppCompatActivity() {
@@ -17,10 +18,13 @@ class MainFuncionalityActivity : AppCompatActivity() {
     private lateinit var nvDrawer: NavigationView
     private lateinit var drawerToggle: ActionBarDrawerToggle
 
+    lateinit var student: Student
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main_funcionality)
+
+        student = intent.getSerializableExtra("student") as Student
 
         //nastavenie toolbaru a nahradenie ActionBaru toolbarom
         toolbar = findViewById(R.id.toolbar)
@@ -41,9 +45,9 @@ class MainFuncionalityActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (drawerToggle.onOptionsItemSelected(item)) {
-            return true;
+            return true
         }
-        return super.onOptionsItemSelected(item);
+        return super.onOptionsItemSelected(item)
     }
 
     override fun onPostCreate(savedInstanceState: Bundle?) {

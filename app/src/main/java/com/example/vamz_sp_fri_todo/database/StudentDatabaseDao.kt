@@ -1,5 +1,6 @@
 package com.example.vamz_sp_fri_todo.database
 
+import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.example.vamz_sp_fri_todo.database.data_classes.StudentDC
 import com.example.vamz_sp_fri_todo.database.data_classes.ToDoItemDC
@@ -67,14 +68,14 @@ interface StudentDatabaseDao {
      */
     @Transaction
     @Query("SELECT * FROM users_table WHERE osCislo = :osCislo")
-    suspend fun getStudentWithLists(osCislo: Int): List<StudentWithLists>
+    fun getStudentWithLists(osCislo: Int): LiveData<List<StudentWithLists?>>
 
     /**
      * Vráti študenta so všetkými svojími zoznamami, ktoré vytvoril.
      */
     @Transaction
     @Query("SELECT * FROM lists_table WHERE listId = :listId")
-    suspend fun getListWithItems(listId: Int): List<ListWithItems>
+    fun getListWithItems(listId: Int): LiveData<List<ListWithItems?>>
 
     /**
      * Vymaže ToDoItem s daným Id.

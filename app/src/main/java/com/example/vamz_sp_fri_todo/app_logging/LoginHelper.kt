@@ -9,7 +9,7 @@ import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.util.*
 
-class HelperClass {
+class LoginHelper {
 
     /**
      * Premení string na vstupe na korektný dátum a vráti.

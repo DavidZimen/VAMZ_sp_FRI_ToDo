@@ -21,32 +21,18 @@ class Student(studentDC: StudentDC) : Serializable {
     }
 
     var osCislo_: Int
-        get() = field
-        set(value: Int) { field = value }
 
     var mail_: String
-        get() = field
-        set(value: String) { field = value }
 
     var password_: String
-        get() = field
-        set(value: String) { field = value }
 
     var name_: String
-        get() = field
-        set(value) { field = value }
 
     var surname_: String
-        get() = field
-        set(value: String) { field = value }
 
     var birthDate_: Date
-        get() = field
-        set(value) { field = value }
 
     var studOdbor_: String
-        get() = field
-        set(value: String) { field = value }
 
     fun printInfo(): String = "$name_ $surname_ $osCislo_ $studOdbor_"
 }

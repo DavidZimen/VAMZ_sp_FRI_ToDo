@@ -23,4 +23,8 @@
     <style name="Theme.VAMZ_sp_FRI_ToDo.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="Theme.VAMZ_sp_FRI_ToDo.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="MyDatePickerDialogTheme" parent="Theme.AppCompat.Light.Dialog">
+        <item name="android:colorAccent">@color/yellow</item>
+    </style>
 </resources>

@@ -10,8 +10,9 @@ import android.view.ViewGroup
 import android.widget.EditText
 import com.example.vamz_sp_fri_todo.R
 import com.example.vamz_sp_fri_todo.app_logging.ControlActivity
-import com.example.vamz_sp_fri_todo.app_logging.HelperClass
+import com.example.vamz_sp_fri_todo.app_logging.LoginHelper
 import com.example.vamz_sp_fri_todo.app_logging.LoggingViewModel
+import com.example.vamz_sp_fri_todo.mainFuncionality.MainFuncionalityActivity
 import com.example.vamz_sp_fri_todo.student.Student
 import kotlinx.android.synthetic.main.fragment_login.view.*
 import kotlinx.android.synthetic.main.fragment_register.view.os_cislo
@@ -30,7 +31,7 @@ class LoginFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val view =  inflater.inflate(R.layout.fragment_login, container, false)
-        val helper = HelperClass()
+        val helper = LoginHelper()
 
         val viewModel = this.activity?.let { LoggingViewModel(it.application) }!!
 
@@ -44,7 +45,7 @@ class LoginFragment : Fragment() {
                 val student = viewModel.student.value
 
                 if (editTextList[1].text.toString() == student?.password) {
-                    val intent = Intent(this.context, ControlActivity::class.java)
+                    val intent = Intent(this.context, MainFuncionalityActivity::class.java)
                     val passedStudent = Student(student)
                     intent.putExtra("student", passedStudent)
                     startActivity(intent)

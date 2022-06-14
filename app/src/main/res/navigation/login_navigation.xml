@@ -22,11 +22,13 @@
             app:exitAnim="@anim/nav_default_exit_anim" />
 
     </fragment>
+
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.example.vamz_sp_fri_todo.app_logging.fragments.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" />
+
     <fragment
         android:id="@+id/registerFragment"
         android:name="com.example.vamz_sp_fri_todo.app_logging.fragments.RegisterFragment"
