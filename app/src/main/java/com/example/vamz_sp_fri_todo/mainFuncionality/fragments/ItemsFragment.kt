@@ -5,16 +5,22 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
+import android.widget.TextView
+import androidx.appcompat.app.AlertDialog
+import androidx.core.view.marginLeft
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import com.example.vamz_sp_fri_todo.R
 import com.example.vamz_sp_fri_todo.database.StudentDatabase
+import com.example.vamz_sp_fri_todo.mainFuncionality.MainFuncionalityActivity
 import com.example.vamz_sp_fri_todo.mainFuncionality.rec_view_adapters.ToDoItemDCAdapter
 import com.example.vamz_sp_fri_todo.mainFuncionality.view_model.MainFuncViewModel
 import com.example.vamz_sp_fri_todo.mainFuncionality.view_model.MainFuncViewModelFactory
 import com.example.vamz_sp_fri_todo.student.Student
 import kotlinx.android.synthetic.main.fragment_items.view.*
+import kotlinx.android.synthetic.main.toolbar.*
 
 class ItemsFragment : Fragment() {
 
@@ -28,19 +34,34 @@ class ItemsFragment : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_items, container, false)
 
-        //prebratie prihlaseneho studenta a inicializacia ViewModelu
-        student = this.activity?.intent?.getSerializableExtra("student") as Student
-
         //ziskanie instanciew viewModelu
         val viewModelFactory = this.requireActivity().defaultViewModelProviderFactory
         viewModel = ViewModelProvider(this, viewModelFactory)[MainFuncViewModel::class.java]
 
-        //vytvorenie adaptera s onClickListenerom a jeho priradenie do RecyclerView pre itemy
-        val adapter = ToDoItemDCAdapter()
-        view.list_of_items.adapter = adapter
-
         val listId = this.requireActivity().intent.getIntExtra("ListId", -1)
         viewModel.getItemsOfList(listId)
+
+        val activity = this.requireActivity() as MainFuncionalityActivity
+        activity.setActionBarTitle(viewModel.items?.value?.get(0)?.toDoList?.listName.toString())
+
+        //prebratie prihlaseneho studenta a inicializacia ViewModelu
+        student = this.activity?.intent?.getSerializableExtra("student") as Student
+
+        //vytvorenie adaptera s onClickListenerom a jeho priradenie do RecyclerView pre itemy
+        val adapter = ToDoItemDCAdapter() {
+            val popis = EditText(this.requireContext())
+            popis.text.append(it?.description)
+            val dialogBuilder = AlertDialog.Builder(this.requireContext())
+
+            dialogBuilder.setTitle("Popis o povinnosti")
+            dialogBuilder.setPositiveButton("Zavrieť") { dialog, which ->
+                dialog.cancel()
+            }
+            dialogBuilder.setView(popis)
+
+            dialogBuilder.show()
+        }
+        view.list_of_items.adapter = adapter
 
         viewModel.items?.observe(viewLifecycleOwner, Observer {
             it?.let {

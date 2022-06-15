@@ -26,5 +26,7 @@
 
     <style name="MyDatePickerDialogTheme" parent="Theme.AppCompat.Light.Dialog">
         <item name="android:colorAccent">@color/yellow</item>
+        <item name="colorControlActivated">@color/unizaBlue</item>
+        <item name="colorControlHighlight">@color/unizaBlue</item>
     </style>
 </resources>

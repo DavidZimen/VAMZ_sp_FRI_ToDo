@@ -5,30 +5,31 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
+    <CheckBox
+    android:id="@+id/chb_finished"
+    android:layout_width="30dp"
+    android:layout_height="30dp"
+    android:layout_marginStart="10dp"
+    android:layout_marginTop="5dp"
+    android:layout_marginBottom="5dp"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent">
 
-    <RadioButton
-        android:id="@+id/rb_finished"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="5dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-    </RadioButton>
+    </CheckBox>
 
     <TextView
         android:id="@+id/todo_title"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
+        android:layout_marginStart="8dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/rb_finished"
+        app:layout_constraintStart_toEndOf="@+id/chb_finished"
         app:layout_constraintTop_toTopOf="parent"
         android:textSize="25dp"
-        tools:text="Title" />
+        tools:text="Title"
+        android:textColor="@color/black"/>
 
     <TextView
         android:id="@+id/todo_date"

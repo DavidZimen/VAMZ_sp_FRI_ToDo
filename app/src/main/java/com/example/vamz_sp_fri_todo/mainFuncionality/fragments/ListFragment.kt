@@ -19,6 +19,7 @@ import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.example.vamz_sp_fri_todo.R
 import com.example.vamz_sp_fri_todo.database.StudentDatabase
 import com.example.vamz_sp_fri_todo.database.data_classes.ToDoListDC
+import com.example.vamz_sp_fri_todo.mainFuncionality.MainFuncionalityActivity
 import com.example.vamz_sp_fri_todo.mainFuncionality.rec_view_adapters.ToDoListDCAdapter
 import com.example.vamz_sp_fri_todo.mainFuncionality.view_model.MainFuncViewModel
 import com.example.vamz_sp_fri_todo.mainFuncionality.view_model.MainFuncViewModelFactory
@@ -37,6 +38,9 @@ class ListFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val view =  inflater.inflate(R.layout.fragment_list, container, false)
+
+        val activity = this.requireActivity() as MainFuncionalityActivity
+        activity.setActionBarTitle("ToDo Zoznamy")
 
         //prebratie prihlaseneho studenta a inicializacia ViewModelu
         student = this.activity?.intent?.getSerializableExtra("student") as Student
@@ -90,6 +94,7 @@ class ListFragment : Fragment() {
 
         return view
     }
+
 
     private fun getItemTouchHelper(view: View, context: Context): ItemTouchHelper {
         val mIth = ItemTouchHelper(

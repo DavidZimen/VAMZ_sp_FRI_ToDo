@@ -80,4 +80,8 @@ class MainFuncionalityActivity : AppCompatActivity() {
     override fun getDefaultViewModelProviderFactory(): MainFuncViewModelFactory {
         return viewModelFactory
     }
+
+    fun setActionBarTitle(title: String) {
+        supportActionBar?.title = title
+    }
 }
