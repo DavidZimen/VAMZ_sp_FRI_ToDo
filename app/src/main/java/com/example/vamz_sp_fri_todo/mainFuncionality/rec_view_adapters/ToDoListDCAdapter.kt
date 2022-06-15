@@ -7,9 +7,10 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.vamz_sp_fri_todo.R
+import com.example.vamz_sp_fri_todo.database.data_classes.ToDoItemDC
 import com.example.vamz_sp_fri_todo.database.data_classes.ToDoListDC
 
-class ToDoListDCAdapter : RecyclerView.Adapter<ToDoListDCAdapter.ListViewHolder>() {
+class ToDoListDCAdapter(private val clickListener: (ToDoListDC?) -> Unit) : RecyclerView.Adapter<ToDoListDCAdapter.ListViewHolder>() {
 
     var data = listOf<ToDoListDC?>()
         @SuppressLint("NotifyDataSetChanged")
@@ -34,6 +35,10 @@ class ToDoListDCAdapter : RecyclerView.Adapter<ToDoListDCAdapter.ListViewHolder>
         val res = holder.itemView.context.resources
 
         holder.listName.text = item?.listName
+
+        holder.itemView.setOnClickListener {
+            clickListener(item)
+        }
     }
 
     class ListViewHolder(listView: View) : RecyclerView.ViewHolder(listView) {

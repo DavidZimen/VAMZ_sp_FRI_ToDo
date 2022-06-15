@@ -8,11 +8,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
+import androidx.lifecycle.ViewModelProvider
 import com.example.vamz_sp_fri_todo.R
-import com.example.vamz_sp_fri_todo.app_logging.ControlActivity
 import com.example.vamz_sp_fri_todo.app_logging.LoginHelper
-import com.example.vamz_sp_fri_todo.app_logging.LoggingViewModel
+import com.example.vamz_sp_fri_todo.app_logging.view_model.LoggingViewModel
 import com.example.vamz_sp_fri_todo.mainFuncionality.MainFuncionalityActivity
+import com.example.vamz_sp_fri_todo.mainFuncionality.view_model.MainFuncViewModel
 import com.example.vamz_sp_fri_todo.student.Student
 import kotlinx.android.synthetic.main.fragment_login.view.*
 import kotlinx.android.synthetic.main.fragment_register.view.os_cislo
@@ -33,7 +34,8 @@ class LoginFragment : Fragment() {
         val view =  inflater.inflate(R.layout.fragment_login, container, false)
         val helper = LoginHelper()
 
-        val viewModel = this.activity?.let { LoggingViewModel(it.application) }!!
+        val viewModelFactory = this.requireActivity().defaultViewModelProviderFactory
+        val viewModel = ViewModelProvider(this, viewModelFactory)[LoggingViewModel::class.java]
 
         view.loginButton.setOnClickListener {
             val editTextList = mutableListOf<EditText>()
@@ -42,11 +44,11 @@ class LoginFragment : Fragment() {
 
             if (helper.checkEmptiness(editTextList)) {
                 viewModel.getStudent(editTextList[0].text.toString().toInt())
-                val student = viewModel.student.value
+                val student = viewModel.student
 
-                if (editTextList[1].text.toString() == student?.password) {
+                if (editTextList[1].text.toString() == student?.password.toString()) {
                     val intent = Intent(this.context, MainFuncionalityActivity::class.java)
-                    val passedStudent = Student(student)
+                    val passedStudent = Student(student!!)
                     intent.putExtra("student", passedStudent)
                     startActivity(intent)
                 } else {

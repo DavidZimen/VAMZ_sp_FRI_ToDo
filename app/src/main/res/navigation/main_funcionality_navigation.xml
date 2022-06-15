@@ -23,6 +23,19 @@
         <action
             android:id="@+id/action_itemsFragment_to_listFragment"
             app:destination="@id/listFragment" />
+        <action
+            android:id="@+id/action_itemsFragment_to_addItemFragment"
+            app:destination="@id/addItemFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/addItemFragment"
+        android:name="com.example.vamz_sp_fri_todo.mainFuncionality.fragments.AddItemFragment"
+        android:label="AddItemFragment"
+        tools:layout="@layout/fragment_add_item">
+        <action
+            android:id="@+id/action_addItemFragment_to_itemsFragment"
+            app:destination="@id/itemsFragment" />
     </fragment>
 
 </navigation>

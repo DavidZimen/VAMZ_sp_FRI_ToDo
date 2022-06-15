@@ -7,7 +7,11 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.lifecycle.ViewModelProvider
 import com.example.vamz_sp_fri_todo.R
+import com.example.vamz_sp_fri_todo.database.StudentDatabase
+import com.example.vamz_sp_fri_todo.mainFuncionality.view_model.MainFuncViewModel
+import com.example.vamz_sp_fri_todo.mainFuncionality.view_model.MainFuncViewModelFactory
 import com.example.vamz_sp_fri_todo.student.Student
 import com.google.android.material.navigation.NavigationView
 
@@ -15,10 +19,10 @@ class MainFuncionalityActivity : AppCompatActivity() {
 
     private lateinit var toolbar: Toolbar
     private lateinit var drawerLayout: DrawerLayout
-    private lateinit var nvDrawer: NavigationView
     private lateinit var drawerToggle: ActionBarDrawerToggle
 
     lateinit var student: Student
+    private lateinit var viewModelFactory: MainFuncViewModelFactory
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,6 +30,15 @@ class MainFuncionalityActivity : AppCompatActivity() {
 
         student = intent.getSerializableExtra("student") as Student
 
+        //vytvorenie vpremennych pre pracu s datami
+        val app = requireNotNull(this).application
+        val db = StudentDatabase.getInstance(app).studentDatabaseDao
+        viewModelFactory = MainFuncViewModelFactory(student.osCislo_, db, app)
+
+        createAndSetUpToolbar()
+    }
+
+    fun createAndSetUpToolbar() {
         //nastavenie toolbaru a nahradenie ActionBaru toolbarom
         toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
@@ -62,5 +75,9 @@ class MainFuncionalityActivity : AppCompatActivity() {
 
     private fun setUpToggle(): ActionBarDrawerToggle {
         return ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.drawer_open, R.string.drawer_close)
+    }
+
+    override fun getDefaultViewModelProviderFactory(): MainFuncViewModelFactory {
+        return viewModelFactory
     }
 }

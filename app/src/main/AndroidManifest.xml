@@ -32,12 +32,6 @@
             tools:ignore="DuplicateActivity">
         </activity>
 
-        <activity
-            android:name=".app_logging.ControlActivity"
-            android:exported="true"
-            android:label="@string/title_activity_control"
-            android:theme="@style/Theme.VAMZ_sp_FRI_ToDo.NoActionBar"
-            tools:ignore="DuplicateActivity" />
     </application>
 
 </manifest>

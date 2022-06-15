@@ -14,10 +14,7 @@ data class ToDoItemDC (
     val itemId: Int,
 
     @ColumnInfo(name = "listId")
-    val listId: Int,
-
-    @ColumnInfo(name = "itemName")
-    var itemName: String = "",
+    var listId: Int = 0,
 
     @ColumnInfo(name = "title")
     var title: String = "",

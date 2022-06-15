@@ -9,6 +9,7 @@ import androidx.room.PrimaryKey
  */
 @Entity(tableName = "lists_table")
 data class ToDoListDC (
+    @ColumnInfo(name = "listId")
     @PrimaryKey(autoGenerate = true)
     val listId: Int,
 

@@ -12,9 +12,10 @@ import android.widget.ArrayAdapter
 import android.widget.EditText
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import com.example.vamz_sp_fri_todo.R
 import com.example.vamz_sp_fri_todo.app_logging.LoginHelper
-import com.example.vamz_sp_fri_todo.app_logging.LoggingViewModel
+import com.example.vamz_sp_fri_todo.app_logging.view_model.LoggingViewModel
 import com.example.vamz_sp_fri_todo.database.data_classes.StudentDC
 import com.example.vamz_sp_fri_todo.mainFuncionality.MainFuncionalityActivity
 import com.example.vamz_sp_fri_todo.student.Student
@@ -37,7 +38,8 @@ class RegisterFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_register, container, false)
         val helper = LoginHelper()
 
-        viewModel = this.activity?.let { LoggingViewModel(it.application) }!!
+        val viewModelFactory = this.requireActivity().defaultViewModelProviderFactory
+        viewModel = ViewModelProvider(this, viewModelFactory)[LoggingViewModel::class.java]
 
         view.datum.setOnClickListener(setDatumClickListener(view))
 
@@ -49,8 +51,6 @@ class RegisterFragment : Fragment() {
         })
 
         view.registerButton.setOnClickListener {
-            //TODO: nezabudnut vymazat
-            viewModel.clear()
 
             val editTextList = mutableListOf<EditText>()
             editTextList.add(view.meno)
@@ -73,7 +73,7 @@ class RegisterFragment : Fragment() {
 
                         //ak uz dany student neexistuje tak zaregistruje
                         viewModel.getStudent(editTextList[4].text.toString().toInt())
-                        val pomStudent = viewModel.student.value
+                        val pomStudent = viewModel.student
 
                         if (pomStudent == null) {
                             //vytiahnutie osobneho cisla, lebo to sa bude posielat dalej
@@ -87,7 +87,7 @@ class RegisterFragment : Fragment() {
                             student.surname = view.priezvisko.text.toString()
                             student.password = view.pass.text.toString()
                             student.studOdbor = view.program.text.toString()
-                            student.birthDate = helper.convertToDate(view.datum.text.toString())?.time!!
+                            student.birthDate = helper.convertStringToDate(view.datum.text.toString())?.time!!
 
                             //pridanie studenta
                             viewModel.insertStudent(student)

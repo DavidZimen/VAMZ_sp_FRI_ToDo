@@ -38,4 +38,7 @@
     <!-- Resources pre action bar animacie -->
     <string name="drawer_open">Open navigation drawer</string>
     <string name="drawer_close">Close navigation drawer</string>
+    <string name="nazov">Názov</string>
+    <string name="popis">Popis</string>
+    <string name="prida_povinnos">Pridať povinnosť</string>
 </resources>

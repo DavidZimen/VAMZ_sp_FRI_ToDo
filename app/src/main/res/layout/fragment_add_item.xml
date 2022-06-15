@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:context=".mainFuncionality.fragments.AddItemFragment">
+
+
+        <EditText
+            android:id="@+id/item_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/nazov"
+            android:paddingLeft="10dp"
+            android:paddingTop="20dp"
+            android:paddingBottom="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/twNazov"
+            app:layout_constraintVertical_bias=".25"
+            app:layout_constraintWidth_percent=".75" />
+
+        <EditText
+            android:id="@+id/item_popis"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/popis"
+            android:paddingLeft="10dp"
+            android:paddingTop="20dp"
+            android:paddingBottom="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView"
+            app:layout_constraintWidth_percent=".75" />
+
+        <EditText
+            android:id="@+id/item_date"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/datum_narodenia"
+            android:paddingLeft="10dp"
+            android:paddingTop="20dp"
+            android:paddingBottom="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/twPopis"
+            app:layout_constraintWidth_percent=".75" />
+
+        <Button
+            android:id="@+id/addItemButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="130dp"
+            android:backgroundTint="@color/yellow"
+            android:text="@string/prida_povinnos"
+            android:textColor="@color/unizaBlue"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/item_popis"
+            app:layout_constraintVertical_bias="0.45"
+            app:layout_constraintWidth_percent="0.75" />
+
+        <TextView
+            android:id="@+id/twNazov"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+            android:text="@string/nazov"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@id/item_title"
+            app:layout_constraintEnd_toEndOf="@+id/item_title"
+            app:layout_constraintStart_toStartOf="@+id/item_title"
+            app:layout_constraintTop_toTopOf="@+id/guideline5" />
+
+        <TextView
+            android:layout_marginTop="10dp"
+            android:id="@+id/textView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+            android:text="@string/popis"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/item_popis"
+            app:layout_constraintStart_toStartOf="@+id/item_popis"
+            app:layout_constraintTop_toBottomOf="@id/item_title" />
+
+        <TextView
+            android:id="@+id/twPopis"
+            android:layout_marginTop="10dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+            android:text="@string/datum_narodenia"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/item_date"
+            app:layout_constraintStart_toStartOf="@+id/item_date"
+            app:layout_constraintTop_toBottomOf="@id/item_popis" />
+
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.2" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

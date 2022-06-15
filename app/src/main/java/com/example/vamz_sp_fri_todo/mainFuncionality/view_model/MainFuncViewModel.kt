@@ -10,11 +10,12 @@ import com.example.vamz_sp_fri_todo.database.data_classes.ToDoListDC
 import com.example.vamz_sp_fri_todo.database.relations.ListWithItems
 import com.example.vamz_sp_fri_todo.database.relations.StudentWithLists
 import kotlinx.coroutines.launch
+import java.io.Serializable
 
 /**
  * ViewModel pre MainFuncionalityActivity a fragmenty, kotré ku nej prislúchajú.
  */
-class MainFuncViewModel(val osCislo: Int, val db: StudentDatabaseDao, application: Application) : AndroidViewModel(application) {
+class MainFuncViewModel(val osCislo: Int, val db: StudentDatabaseDao, application: Application) : AndroidViewModel(application), Serializable {
 
     lateinit var lists: LiveData<List<StudentWithLists?>>
     var items: LiveData<List<ListWithItems?>>? = null
@@ -23,6 +24,12 @@ class MainFuncViewModel(val osCislo: Int, val db: StudentDatabaseDao, applicatio
         viewModelScope.launch {
             lists = db.getStudentWithLists(osCislo)
         }
+    }
+
+    fun removeListAtPosition(position: Int) {
+        val id = lists.value?.get(0)?.lists?.get(position - 1)?.listId
+
+        deleteList(id!!)
     }
 
     /**
@@ -94,6 +101,16 @@ class MainFuncViewModel(val osCislo: Int, val db: StudentDatabaseDao, applicatio
     fun deleteItemsOfList(listId: Int) {
         viewModelScope.launch {
             db.deleteItemsFromList(listId)
+        }
+    }
+
+    /**
+     * nastavi hodnotu listId pre mazanie
+     */
+    private fun getListId(osCislo: Int, title: String) {
+        //TODO: Z nejakeho dovodu vracia null hodnotu
+        viewModelScope.launch {
+             db.getListId(osCislo, title)?.listId
         }
     }
 }

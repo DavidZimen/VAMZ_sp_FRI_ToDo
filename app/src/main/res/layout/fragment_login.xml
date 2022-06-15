@@ -43,6 +43,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/yellow"
+        android:textColor="@color/unizaBlue"
         android:text="@string/login_text"
         android:textSize="16sp"
         android:textStyle="bold"

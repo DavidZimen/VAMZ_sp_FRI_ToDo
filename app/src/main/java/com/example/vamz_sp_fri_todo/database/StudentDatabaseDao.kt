@@ -98,7 +98,12 @@ interface StudentDatabaseDao {
     @Query("DELETE FROM lists_table WHERE listId = :listId")
     suspend fun deleteList(listId: Int)
 
-
+    /**
+     * Vráti id zadaného zoznamu od zadaného študenta.
+     */
+    @Transaction
+    @Query("SELECT * FROM lists_table WHERE listName = :title AND student = :osCislo")
+    suspend fun getListId(osCislo: Int, title: String): ToDoListDC?
 }
 
 
