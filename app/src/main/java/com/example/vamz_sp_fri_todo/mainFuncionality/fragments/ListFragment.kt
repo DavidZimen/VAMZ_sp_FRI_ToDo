@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.Toast
+import androidx.activity.addCallback
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -92,6 +93,11 @@ class ListFragment : Fragment() {
         val ith = getItemTouchHelper(view, this.requireContext())
         ith.attachToRecyclerView(view.list_of_lists)
 
+        //zabráni, aby sa dostalo naspat do LoginActivity
+        requireActivity().onBackPressedDispatcher.addCallback {
+
+        }
+
         return view
     }
 
@@ -137,4 +143,5 @@ class ListFragment : Fragment() {
 
         return mIth
     }
+
 }

@@ -1,5 +1,7 @@
 package com.example.vamz_sp_fri_todo.mainFuncionality.fragments
 
+import android.annotation.SuppressLint
+import android.os.Build
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -7,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.TextView
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
 import androidx.core.view.marginLeft
 import androidx.lifecycle.Observer
@@ -20,13 +23,19 @@ import com.example.vamz_sp_fri_todo.mainFuncionality.view_model.MainFuncViewMode
 import com.example.vamz_sp_fri_todo.mainFuncionality.view_model.MainFuncViewModelFactory
 import com.example.vamz_sp_fri_todo.student.Student
 import kotlinx.android.synthetic.main.fragment_items.view.*
+import kotlinx.android.synthetic.main.to_do_item_dialog.view.*
 import kotlinx.android.synthetic.main.toolbar.*
+import java.time.Instant
+import java.time.LocalDate
+import java.time.ZoneId
+import java.time.format.DateTimeFormatter
 
 class ItemsFragment : Fragment() {
 
     private lateinit var viewModel: MainFuncViewModel
     private lateinit var student: Student
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -48,19 +57,7 @@ class ItemsFragment : Fragment() {
         student = this.activity?.intent?.getSerializableExtra("student") as Student
 
         //vytvorenie adaptera s onClickListenerom a jeho priradenie do RecyclerView pre itemy
-        val adapter = ToDoItemDCAdapter() {
-            val popis = EditText(this.requireContext())
-            popis.text.append(it?.description)
-            val dialogBuilder = AlertDialog.Builder(this.requireContext())
-
-            dialogBuilder.setTitle("Popis o povinnosti")
-            dialogBuilder.setPositiveButton("Zavrieť") { dialog, which ->
-                dialog.cancel()
-            }
-            dialogBuilder.setView(popis)
-
-            dialogBuilder.show()
-        }
+        val adapter = createAdapter()
         view.list_of_items.adapter = adapter
 
         viewModel.items?.observe(viewLifecycleOwner, Observer {
@@ -76,4 +73,68 @@ class ItemsFragment : Fragment() {
         return view
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
+    @SuppressLint("InflateParams")
+    private fun createAdapter() : ToDoItemDCAdapter {
+        return ToDoItemDCAdapter {
+            val dialogBuilder = AlertDialog.Builder(this.requireContext())
+            dialogBuilder.setTitle("Popis o povinnosti")
+
+            //nastavenie vlastneho layoutu
+            val view = layoutInflater.inflate(R.layout.to_do_item_dialog, null)
+            dialogBuilder.setView(view)
+
+            //nastavenie textov do textView
+            view.tw_title.text = it?.title
+            val date: LocalDate = Instant.ofEpochMilli(it?.deadline!!).atZone(ZoneId.systemDefault()).toLocalDate()
+            val formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy")
+            view.tw_date.text = date.format(formatter)
+            view.tw_popis.text = it.description
+
+
+            dialogBuilder.setNegativeButton("Zavrieť") { dialog, which ->
+                dialog.cancel()
+            }
+
+            dialogBuilder.show()
+        }
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

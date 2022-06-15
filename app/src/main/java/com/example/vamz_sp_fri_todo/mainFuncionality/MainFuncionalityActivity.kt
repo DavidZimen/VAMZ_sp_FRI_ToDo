@@ -7,13 +7,10 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
-import androidx.lifecycle.ViewModelProvider
 import com.example.vamz_sp_fri_todo.R
 import com.example.vamz_sp_fri_todo.database.StudentDatabase
-import com.example.vamz_sp_fri_todo.mainFuncionality.view_model.MainFuncViewModel
 import com.example.vamz_sp_fri_todo.mainFuncionality.view_model.MainFuncViewModelFactory
 import com.example.vamz_sp_fri_todo.student.Student
-import com.google.android.material.navigation.NavigationView
 
 class MainFuncionalityActivity : AppCompatActivity() {
 

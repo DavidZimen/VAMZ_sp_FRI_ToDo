@@ -18,6 +18,7 @@ import com.example.vamz_sp_fri_todo.app_logging.LoginHelper
 import com.example.vamz_sp_fri_todo.database.data_classes.ToDoItemDC
 import com.example.vamz_sp_fri_todo.mainFuncionality.MainFuncionalityActivity
 import com.example.vamz_sp_fri_todo.mainFuncionality.view_model.MainFuncViewModel
+import kotlinx.android.synthetic.main.activity_logging.*
 import kotlinx.android.synthetic.main.fragment_add_item.view.*
 import kotlinx.android.synthetic.main.fragment_register.view.*
 import java.util.*
@@ -75,6 +76,8 @@ class AddItemFragment : Fragment() {
 
         return view
     }
+
+
 
     /**
      * Vytvorí OnClickListener pre výber dátumu.

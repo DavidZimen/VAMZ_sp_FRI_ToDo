@@ -1,7 +1,7 @@
 package com.example.vamz_sp_fri_todo.app_logging
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.example.vamz_sp_fri_todo.R
 import com.example.vamz_sp_fri_todo.app_logging.view_model.LoggingViewModelFactory
 import com.example.vamz_sp_fri_todo.database.StudentDatabase

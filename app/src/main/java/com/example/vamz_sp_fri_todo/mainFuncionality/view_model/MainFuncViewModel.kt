@@ -27,9 +27,10 @@ class MainFuncViewModel(val osCislo: Int, val db: StudentDatabaseDao, applicatio
     }
 
     fun removeListAtPosition(position: Int) {
-        val id = lists.value?.get(0)?.lists?.get(position - 1)?.listId
+        val id = lists.value?.get(0)?.lists?.get(position)?.listId
 
-        deleteList(id!!)
+        deleteItemsOfList(id!!)
+        deleteList(id)
     }
 
     /**

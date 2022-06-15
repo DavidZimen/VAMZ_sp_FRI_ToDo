@@ -35,7 +35,9 @@
         tools:layout="@layout/fragment_add_item">
         <action
             android:id="@+id/action_addItemFragment_to_itemsFragment"
-            app:destination="@id/itemsFragment" />
+            app:destination="@id/itemsFragment"
+            app:popUpTo="@id/itemsFragment"
+            app:popUpToInclusive="true" />
     </fragment>
 
 </navigation>
