@@ -88,7 +88,6 @@ class CalendarFragment : Fragment() {
         return ToDoItemDCAdapter({
             val dialogBuilder = AlertDialog.Builder(this.requireContext())
             dialogBuilder.setTitle("Popis o povinnosti")
-
             //nastavenie vlastneho layoutu
             val view = layoutInflater.inflate(R.layout.to_do_item_dialog, null)
             dialogBuilder.setView(view)
