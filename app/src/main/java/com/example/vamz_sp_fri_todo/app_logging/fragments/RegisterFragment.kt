@@ -12,6 +12,7 @@ import android.widget.ArrayAdapter
 import android.widget.EditText
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.vamz_sp_fri_todo.R
 import com.example.vamz_sp_fri_todo.helper.Helper
@@ -73,41 +74,45 @@ class RegisterFragment : Fragment() {
                     //kontrola zhody zadanych hesiel
                     if (helper.checkPassword(view.pass, view.pass_conf)) {
 
-                        //ak uz dany student neexistuje tak zaregistruje
                         viewModel.getStudent(editTextList[4].text.toString().toInt())
-                        val pomStudent = viewModel.student
+                        viewModel.student.observe(viewLifecycleOwner, Observer {
 
-                        if (pomStudent == null) {
-                            //vytiahnutie osobneho cisla, lebo to sa bude posielat dalej
-                            val osCislo = Integer.parseInt(view.os_cislo.text.toString())
+                            //ak uz dany student neexistuje tak zaregistruje
+                            viewModel.getStudent(editTextList[4].text.toString().toInt())
+                            val pomStudent = it
 
-                            //vytvorenie instancie studenta a jeho nasledne pridanie do databazy
-                            val student = StudentDC()
-                            student.osCislo = osCislo
-                            student.mail = view.email.text.toString()
-                            student.name = view.meno.text.toString()
-                            student.surname = view.priezvisko.text.toString()
-                            student.password = view.pass.text.toString()
-                            student.studOdbor = view.program.text.toString()
-                            student.birthDate = helper.convertStringToDate(view.datum.text.toString())?.time!!
+                            if (pomStudent == null) {
+                                //vytiahnutie osobneho cisla, lebo to sa bude posielat dalej
+                                val osCislo = Integer.parseInt(view.os_cislo.text.toString())
 
-                            //pridanie studenta
-                            viewModel.insertStudent(student)
+                                //vytvorenie instancie studenta a jeho nasledne pridanie do databazy
+                                val student = StudentDC()
+                                student.osCislo = osCislo
+                                student.mail = view.email.text.toString()
+                                student.name = view.meno.text.toString()
+                                student.surname = view.priezvisko.text.toString()
+                                student.password = view.pass.text.toString()
+                                student.studOdbor = view.program.text.toString()
+                                student.birthDate = helper.convertStringToDate(view.datum.text.toString())?.time!!
 
-                            val intent = Intent(this.context, MainFuncionalityActivity::class.java)
-                            val passedStudent = Student(student)
-                            intent.putExtra("student", passedStudent)
-                            intent.putExtra("datum", view.datum.text.toString())
+                                //pridanie studenta
+                                viewModel.insertStudent(student)
 
-                            editor.apply {
-                                editor.putInt("os_cislo", student.osCislo)
-                                apply()
+                                val intent = Intent(this.context, MainFuncionalityActivity::class.java)
+                                val passedStudent = Student(student)
+                                intent.putExtra("student", passedStudent)
+                                intent.putExtra("datum", view.datum.text.toString())
+
+                                editor.apply {
+                                    editor.putInt("os_cislo", student.osCislo)
+                                    apply()
+                                }
+
+                                startActivity(intent)
+                            } else {
+                                editTextList[4].error = "Študent s daným číslom existuje. Prihláste sa alebo zadajne iné číslo."
                             }
-
-                            startActivity(intent)
-                        } else {
-                            editTextList[4].error = "Študent s daným číslom existuje. Prihláste sa alebo zadajne iné číslo."
-                        }
+                        })
                     }
                 }
             }
@@ -116,40 +121,3 @@ class RegisterFragment : Fragment() {
         return view
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -6,20 +6,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.CheckBox
-import android.widget.RadioButton
 import android.widget.TextView
 import androidx.annotation.RequiresApi
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.example.vamz_sp_fri_todo.R
 import com.example.vamz_sp_fri_todo.database.data_classes.ToDoItemDC
-import kotlinx.android.synthetic.main.todo_item.view.*
-import java.sql.Date
+import com.example.vamz_sp_fri_todo.mainFuncionality.view_model.MainFuncViewModel
 import java.time.Instant
 import java.time.LocalDate
 import java.time.ZoneId
 import java.time.format.DateTimeFormatter
 
-class ToDoItemDCAdapter(private val clickListener: (ToDoItemDC?) -> Unit) : RecyclerView.Adapter<ToDoItemDCAdapter.ItemViewHolder>(){
+class ToDoItemDCAdapter(private val clickListener: (ToDoItemDC?) -> Unit, private val viewModel: MainFuncViewModel) : RecyclerView.Adapter<ToDoItemDCAdapter.ItemViewHolder>(){
 
     var data = listOf<ToDoItemDC?>()
         @SuppressLint("NotifyDataSetChanged")
@@ -48,20 +47,24 @@ class ToDoItemDCAdapter(private val clickListener: (ToDoItemDC?) -> Unit) : Recy
         val date: LocalDate = Instant.ofEpochMilli(item?.deadline!!).atZone(ZoneId.systemDefault()).toLocalDate()
         val formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy")
 
-        holder.title.text = item.title.toString()
+        holder.title.text = item.title
         holder.datum.text = date.format(formatter)
+
+        if (item.status == 1) {
+            holder.checkBox.isChecked = true
+        }
 
         holder.itemView.setOnClickListener {
            clickListener(item)
         }
 
-        holder.checkBox.setOnCheckedChangeListener {buttonView, isChecked ->
+        holder.checkBox.setOnCheckedChangeListener { buttonView, isChecked ->
             if (isChecked) {
                 1.also { item.status = it }
-                holder.title.setTextColor(R.color.green)
+                viewModel.updateItem(item)
             } else  {
                 0.also { item.status = it }
-                holder.title.setTextColor(R.color.black)
+                viewModel.updateItem(item)
             }
         }
     }

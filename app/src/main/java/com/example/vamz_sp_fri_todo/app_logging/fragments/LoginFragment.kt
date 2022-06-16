@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.vamz_sp_fri_todo.R
 import com.example.vamz_sp_fri_todo.helper.Helper
@@ -45,23 +46,29 @@ class LoginFragment : Fragment() {
             editTextList.add(view.pass)
 
             if (helper.checkEmptiness(editTextList)) {
-                val studentDC = viewModel.student?.value
+                //inicializacie premennej student
+                viewModel.getStudent(editTextList[0].text.toString().toInt())
 
-                if (editTextList[1].text.toString() == studentDC?.password.toString()) {
-                    val intent = Intent(this.context, MainFuncionalityActivity::class.java)
-                    val student = Student(studentDC!!)
-                    intent.putExtra("student", student)
+                viewModel.student.observe(viewLifecycleOwner, Observer {
+                    viewModel.getStudent(editTextList[0].text.toString().toInt())
+                    val studentDC = it
 
-                    editor.apply {
-                        editor.putInt("os_cislo", studentDC.osCislo)
-                        apply()
+                    if (editTextList[1].text.toString() == studentDC?.password.toString()) {
+                        val intent = Intent(this.context, MainFuncionalityActivity::class.java)
+                        val student = Student(studentDC!!)
+                        intent.putExtra("student", student)
+
+                        editor.apply {
+                            editor.putInt("os_cislo", student.osCislo_)
+                            apply()
+                        }
+
+                        this.requireActivity().finish()
+                        startActivity(intent)
+                    } else {
+                        view.error_text.text = "Osobné číslo alebo heslo je nesprávne."
                     }
-
-                    this.requireActivity().finish()
-                    startActivity(intent)
-                } else {
-                    view.error_text.text = "Osobné číslo alebo heslo je nesprávne."
-                }
+                })
             }
         }
 

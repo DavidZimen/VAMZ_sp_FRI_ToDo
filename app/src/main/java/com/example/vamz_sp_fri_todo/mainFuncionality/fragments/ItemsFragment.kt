@@ -76,7 +76,7 @@ class ItemsFragment : Fragment() {
     @RequiresApi(Build.VERSION_CODES.O)
     @SuppressLint("InflateParams")
     private fun createAdapter() : ToDoItemDCAdapter {
-        return ToDoItemDCAdapter {
+        return ToDoItemDCAdapter({
             val dialogBuilder = AlertDialog.Builder(this.requireContext())
             dialogBuilder.setTitle("Popis o povinnosti")
 
@@ -97,7 +97,7 @@ class ItemsFragment : Fragment() {
             }
 
             dialogBuilder.show()
-        }
+        }, viewModel)
     }
 }
 
