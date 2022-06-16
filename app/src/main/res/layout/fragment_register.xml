@@ -48,7 +48,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:hint="@string/datum_narodenia"
+            android:hint="@string/datum"
             android:paddingLeft="10dp"
             android:paddingTop="20dp"
             android:paddingBottom="10dp"

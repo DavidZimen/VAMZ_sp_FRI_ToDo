@@ -34,5 +34,4 @@ class Student(studentDC: StudentDC) : Serializable {
 
     var studOdbor_: String
 
-    fun printInfo(): String = "$name_ $surname_ $osCislo_ $studOdbor_"
 }

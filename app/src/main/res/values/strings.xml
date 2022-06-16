@@ -13,7 +13,8 @@
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="priezvisko">Priezvisko</string>
-    <string name="datum_narodenia">Dátum</string>
+    <string name="datum_narodenia">Dátum narodenia</string>
+    <string name="datum">Dátum</string>
     <string name="tudijn_program">Študijný program</string>
     <string name="heslo">Heslo</string>
     <string name="email">Email</string>
@@ -22,8 +23,6 @@
     <string name="title_activity_control">ControlActivity</string>
     <string name="title_activity_main">MainActivity</string>
     <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
     <string name="pass_conf">Potvrdenie hesla</string>
     <string name="menu_header">FRI ToDo List app</string>
 
@@ -41,4 +40,8 @@
     <string name="nazov">Názov</string>
     <string name="popis">Popis</string>
     <string name="prida_povinnos">Pridať povinnosť</string>
+    <string name="todo_zoznamy">ToDo zoznamy</string>
+    <string name="calendar">Kalendár</string>
+    <string name="account">Účet</string>
+    <string name="deadline">Deadline</string>
 </resources>

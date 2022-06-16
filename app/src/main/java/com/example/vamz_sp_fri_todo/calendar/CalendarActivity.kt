@@ -1,47 +1,42 @@
-package com.example.vamz_sp_fri_todo.mainFuncionality
+package com.example.vamz_sp_fri_todo.calendar
 
 import android.content.Intent
 import android.content.res.Configuration
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.ActionBarDrawerToggle
-import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
 import com.example.vamz_sp_fri_todo.R
-import com.example.vamz_sp_fri_todo.calendar.CalendarActivity
-import com.example.vamz_sp_fri_todo.database.StudentDatabase
-import com.example.vamz_sp_fri_todo.mainFuncionality.view_model.MainFuncViewModelFactory
+import com.example.vamz_sp_fri_todo.mainFuncionality.MainFuncionalityActivity
 import com.example.vamz_sp_fri_todo.student.Student
 import com.example.vamz_sp_fri_todo.student.StudentInformationActivity
-import kotlinx.android.synthetic.main.activity_main_funcionality.*
+import kotlinx.android.synthetic.main.activity_calendar.*
 
-class MainFuncionalityActivity : AppCompatActivity() {
+class CalendarActivity : AppCompatActivity() {
 
     private lateinit var toolbar: Toolbar
     private lateinit var drawerLayout: DrawerLayout
     private lateinit var drawerToggle: ActionBarDrawerToggle
 
     lateinit var student: Student
-    private lateinit var viewModelFactory: MainFuncViewModelFactory
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main_funcionality)
+        setContentView(R.layout.activity_calendar)
 
         student = intent.getSerializableExtra("student") as Student
 
-        //vytvorenie vpremennych pre pracu s datami
-        val app = requireNotNull(this).application
-        val db = StudentDatabase.getInstance(app).studentDatabaseDao
-        viewModelFactory = MainFuncViewModelFactory(student.osCislo_, db, app)
-
         createAndSetUpToolbar()
 
-        nvView.setNavigationItemSelectedListener {
+        //nastavenie akcii pre bocne menu
+        calNvView.setNavigationItemSelectedListener {
+            var intent: Intent? = null
+
             when (it.itemId) {
-                R.id.nav_calendae -> {
-                    intent = Intent(this, CalendarActivity::class.java)
+                R.id.nav_lists -> {
+                    intent = Intent(this, MainFuncionalityActivity::class.java)
                     intent.putExtra("student", student)
                     startActivity(intent)
                 }
@@ -52,12 +47,13 @@ class MainFuncionalityActivity : AppCompatActivity() {
                     startActivity(intent)
                 }
 
-                R.id.nav_lists -> {}
+                R.id.nav_calendae -> {}
             }
 
             return@setNavigationItemSelectedListener true
         }
     }
+
 
     fun createAndSetUpToolbar() {
         //nastavenie toolbaru a nahradenie ActionBaru toolbarom
@@ -75,6 +71,7 @@ class MainFuncionalityActivity : AppCompatActivity() {
 
         //napojenie eventou DrawerLayoutu ku ActionBaru
         drawerLayout.addDrawerListener(drawerToggle)
+        supportActionBar?.title = "Kalendár"
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -98,11 +95,7 @@ class MainFuncionalityActivity : AppCompatActivity() {
         return ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.drawer_open, R.string.drawer_close)
     }
 
-    override fun getDefaultViewModelProviderFactory(): MainFuncViewModelFactory {
-        return viewModelFactory
-    }
+    override fun onBackPressed() {
 
-    fun setActionBarTitle(title: String) {
-        supportActionBar?.title = title
     }
 }

@@ -2,17 +2,15 @@ package com.example.vamz_sp_fri_todo.app_logging.fragments
 
 import android.annotation.SuppressLint
 import android.content.Intent
-import android.content.Intent.FLAG_ACTIVITY_CLEAR_TASK
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
-import androidx.core.app.ActivityCompat
 import androidx.lifecycle.ViewModelProvider
 import com.example.vamz_sp_fri_todo.R
-import com.example.vamz_sp_fri_todo.app_logging.LoginHelper
+import com.example.vamz_sp_fri_todo.helper.Helper
 import com.example.vamz_sp_fri_todo.app_logging.view_model.LoggingViewModel
 import com.example.vamz_sp_fri_todo.mainFuncionality.MainFuncionalityActivity
 import com.example.vamz_sp_fri_todo.student.Student
@@ -33,7 +31,7 @@ class LoginFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val view =  inflater.inflate(R.layout.fragment_login, container, false)
-        val helper = LoginHelper()
+        val helper = Helper()
 
         val viewModelFactory = this.requireActivity().defaultViewModelProviderFactory
         val viewModel = ViewModelProvider(this, viewModelFactory)[LoggingViewModel::class.java]

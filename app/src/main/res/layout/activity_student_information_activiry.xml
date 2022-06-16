@@ -4,49 +4,42 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".mainFuncionality.MainFuncionalityActivity">
+    tools:context=".student.StudentInformationActivity">
 
-    <!-- This DrawerLayout has two children at the root  -->
     <androidx.drawerlayout.widget.DrawerLayout
         android:id="@+id/drawer_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <!-- This LinearLayout represents the contents of the screen  -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <!-- The ActionBar displayed at the top -->
             <include
                 layout="@layout/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
-            <!-- The main content view where fragments are loaded -->
             <FrameLayout
                 android:id="@+id/flContent"
                 app:layout_behavior="@string/appbar_scrolling_view_behavior"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <androidx.fragment.app.FragmentContainerView
-                    android:id="@+id/fragment"
-                    android:name="androidx.navigation.fragment.NavHostFragment"
+                <fragment
+                    android:name="com.example.vamz_sp_fri_todo.student.StudentInformationFragment"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    app:defaultNavHost="true"
-                    app:navGraph="@navigation/main_funcionality_navigation"
-                    tools:layout_editor_absoluteX="1dp"
-                    tools:layout_editor_absoluteY="1dp" />
+                    tools:layout="@layout/fragment_student_information">
+                </fragment>
 
             </FrameLayout>
         </LinearLayout>
 
 
         <com.google.android.material.navigation.NavigationView
-            android:id="@+id/nvView"
+            android:id="@+id/accNvView"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="start"
@@ -54,6 +47,5 @@
             app:menu="@menu/swipe_menu"
             app:headerLayout="@layout/menu_header"/>
     </androidx.drawerlayout.widget.DrawerLayout>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

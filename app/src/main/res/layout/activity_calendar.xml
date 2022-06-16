@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".mainFuncionality.MainFuncionalityActivity">
+    tools:context=".calendar.CalendarActivity">
 
     <!-- This DrawerLayout has two children at the root  -->
     <androidx.drawerlayout.widget.DrawerLayout
@@ -31,22 +31,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <androidx.fragment.app.FragmentContainerView
-                    android:id="@+id/fragment"
-                    android:name="androidx.navigation.fragment.NavHostFragment"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    app:defaultNavHost="true"
-                    app:navGraph="@navigation/main_funcionality_navigation"
-                    tools:layout_editor_absoluteX="1dp"
-                    tools:layout_editor_absoluteY="1dp" />
-
             </FrameLayout>
         </LinearLayout>
 
 
         <com.google.android.material.navigation.NavigationView
-            android:id="@+id/nvView"
+            android:id="@+id/calNvView"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="start"
@@ -54,6 +44,5 @@
             app:menu="@menu/swipe_menu"
             app:headerLayout="@layout/menu_header"/>
     </androidx.drawerlayout.widget.DrawerLayout>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

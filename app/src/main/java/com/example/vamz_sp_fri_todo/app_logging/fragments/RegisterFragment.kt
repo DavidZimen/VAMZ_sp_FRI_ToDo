@@ -1,7 +1,6 @@
 package com.example.vamz_sp_fri_todo.app_logging.fragments
 
 import android.annotation.SuppressLint
-import android.app.DatePickerDialog
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
@@ -14,13 +13,12 @@ import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.vamz_sp_fri_todo.R
-import com.example.vamz_sp_fri_todo.app_logging.LoginHelper
+import com.example.vamz_sp_fri_todo.helper.Helper
 import com.example.vamz_sp_fri_todo.app_logging.view_model.LoggingViewModel
 import com.example.vamz_sp_fri_todo.database.data_classes.StudentDC
 import com.example.vamz_sp_fri_todo.mainFuncionality.MainFuncionalityActivity
 import com.example.vamz_sp_fri_todo.student.Student
 import kotlinx.android.synthetic.main.fragment_register.view.*
-import java.util.*
 
 /**
  * Vytvorí fragmet pre obsluhu registrácie do systému.
@@ -36,12 +34,12 @@ class RegisterFragment : Fragment() {
         savedInstanceState: Bundle?): View?
     {
         val view = inflater.inflate(R.layout.fragment_register, container, false)
-        val helper = LoginHelper()
+        val helper = Helper()
 
         val viewModelFactory = this.requireActivity().defaultViewModelProviderFactory
         viewModel = ViewModelProvider(this, viewModelFactory)[LoggingViewModel::class.java]
 
-        view.datum.setOnClickListener(setDatumClickListener(view))
+        view.datum.setOnClickListener(helper.setDatumClickListener(view, true, this, view.datum))
 
         //ziskanie autocomplete textview a nastavenie vlastnosti
         view.program.setAdapter(ArrayAdapter(this.context!!, android.R.layout.simple_dropdown_item_1line, resources.getStringArray(R.array.Programy)))
@@ -106,48 +104,6 @@ class RegisterFragment : Fragment() {
         }
 
         return view
-    }
-
-
-    /**
-     * Vytvorí OnClickListener pre výber dátumu.
-     * Pre zjednodušenie prehľadnosti kódu.
-     */
-    private fun setDatumClickListener(view: View) : View.OnClickListener {
-
-        return  View.OnClickListener {
-            //ziskanie pristupu ku polu s datumom narodenia
-            val birthDateEditText = view.datum
-            birthDateEditText.showSoftInputOnFocus = false
-
-            //vytvorenie instancie kalendara a ziskanie jednotlivych casti do premennych
-            //mesiac ma o jedno viac, aby sme sa posunuli v poli, kedze januar zacina na 0
-            val calendar = Calendar.getInstance()
-            val year = calendar.get(Calendar.YEAR)
-            val month = calendar.get(Calendar.MONTH) + 1
-            val day = calendar.get(Calendar.DAY_OF_MONTH)
-
-            //vytvorenie listenera pre datum a nastavenie datumu do textView
-            val dateSetListener =
-                DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
-                    val month: Int = monthOfYear + 1
-                    var day: String = dayOfMonth.toString()
-
-                    if (dayOfMonth < 10) day = "0$day"
-
-                    if (month < 10) {
-                        birthDateEditText.setText("$day.0$month.$year")
-                    } else {
-                        birthDateEditText.setText("$day.$month.$year")
-                    }
-                }
-
-
-            //vytvorenie a zobrazenie dialogu pre vyber datumu
-            val dpd = activity?.let { it1 -> DatePickerDialog(it1, R.style.MyDatePickerDialogTheme,dateSetListener, year, month, day) }
-            dpd?.datePicker?.maxDate = System.currentTimeMillis()
-            dpd?.show()
-        }
     }
 }
 

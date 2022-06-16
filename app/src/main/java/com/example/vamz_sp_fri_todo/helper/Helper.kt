@@ -1,4 +1,4 @@
-package com.example.vamz_sp_fri_todo.app_logging
+package com.example.vamz_sp_fri_todo.helper
 
 import android.app.DatePickerDialog
 import android.graphics.Color
@@ -9,12 +9,11 @@ import android.widget.EditText
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import com.example.vamz_sp_fri_todo.R
-import kotlinx.android.synthetic.main.fragment_add_item.view.*
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.util.*
 
-class LoginHelper {
+class Helper {
 
     /**
      * Premení string na vstupe na korektný dátum a vráti.
@@ -72,18 +71,17 @@ class LoginHelper {
      * Vytvorí OnClickListener pre výber dátumu.
      * Pre zjednodušenie prehľadnosti kódu.
      */
-    fun setDatumClickListener(view: View, register: Boolean, fragment: Fragment) : View.OnClickListener {
+    fun setDatumClickListener(view: View, register: Boolean, fragment: Fragment, editText: EditText) : View.OnClickListener {
 
         return  View.OnClickListener {
             //ziskanie pristupu ku polu s datumom narodenia
-            val dateEditText = view.item_date
-            dateEditText.showSoftInputOnFocus = false
+            editText.showSoftInputOnFocus = false
 
             //vytvorenie instancie kalendara a ziskanie jednotlivych casti do premennych
             //mesiac ma o jedno viac, aby sme sa posunuli v poli, kedze januar zacina na 0
             val calendar = Calendar.getInstance()
             val year = calendar.get(Calendar.YEAR)
-            val month = calendar.get(Calendar.MONTH) + 1
+            val month = calendar.get(Calendar.MONTH)
             val day = calendar.get(Calendar.DAY_OF_MONTH)
 
             //vytvorenie listenera pre datum a nastavenie datumu do textView
@@ -95,9 +93,9 @@ class LoginHelper {
                     if (dayOfMonth < 10) day = "0$day"
 
                     if (month < 10) {
-                        dateEditText.setText("$day.0$month.$year")
+                        editText.setText("$day.0$month.$year")
                     } else {
-                        dateEditText.setText("$day.$month.$year")
+                        editText.setText("$day.$month.$year")
                     }
                 }
 

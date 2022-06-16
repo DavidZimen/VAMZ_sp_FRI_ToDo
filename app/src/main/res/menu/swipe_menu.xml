@@ -4,16 +4,13 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_lists"
-            android:title="ToDo zoznamy" />
+            android:title="@string/todo_zoznamy" />
         <item
             android:id="@+id/nav_calendae"
-            android:title="Kalendár" />
+            android:title="@string/calendar" />
         <item
             android:id="@+id/nav_account"
-            android:title="Účet" />
-        <item
-            android:id="@+id/nav_settings"
-            android:title="Nastavenie" />
+            android:title="@string/account" />
     </group>
 
 </menu>
