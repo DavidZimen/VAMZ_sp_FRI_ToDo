@@ -46,4 +46,5 @@
     <string name="deadline">Deadline</string>
     <string name="upravit">Upraviť</string>
     <string name="potvrdit_zmeny">Potvrdiť zmeny</string>
+    <string name="povinnosti">Povinnosti na zvoleneý deň:</string>
 </resources>

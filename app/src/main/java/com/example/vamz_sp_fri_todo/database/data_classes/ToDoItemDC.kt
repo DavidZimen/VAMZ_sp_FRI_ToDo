@@ -16,6 +16,7 @@ data class ToDoItemDC (
     @ColumnInfo(name = "listId")
     var listId: Int = 0,
 
+
     @ColumnInfo(name = "title")
     var title: String = "",
 

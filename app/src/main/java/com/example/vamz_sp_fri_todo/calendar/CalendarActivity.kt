@@ -11,7 +11,9 @@ import androidx.appcompat.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
 import com.example.vamz_sp_fri_todo.R
 import com.example.vamz_sp_fri_todo.app_logging.LoggingActivity
+import com.example.vamz_sp_fri_todo.database.StudentDatabase
 import com.example.vamz_sp_fri_todo.mainFuncionality.MainFuncionalityActivity
+import com.example.vamz_sp_fri_todo.mainFuncionality.view_model.MainFuncViewModelFactory
 import com.example.vamz_sp_fri_todo.student.Student
 import com.example.vamz_sp_fri_todo.student.StudentInformationActivity
 import kotlinx.android.synthetic.main.activity_calendar.*
@@ -23,12 +25,18 @@ class CalendarActivity : AppCompatActivity() {
     private lateinit var drawerToggle: ActionBarDrawerToggle
 
     lateinit var student: Student
+    private lateinit var viewModelFactory: MainFuncViewModelFactory
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_calendar)
 
         student = intent.getSerializableExtra("student") as Student
+
+        //vytvorenie premennych pre pracu s datami
+        val app = requireNotNull(this).application
+        val db = StudentDatabase.getInstance(app).studentDatabaseDao
+        viewModelFactory = MainFuncViewModelFactory(student.osCislo_, db, app)
 
         createAndSetUpToolbar()
 
@@ -110,5 +118,9 @@ class CalendarActivity : AppCompatActivity() {
 
     override fun onBackPressed() {
 
+    }
+
+    override fun getDefaultViewModelProviderFactory(): MainFuncViewModelFactory {
+        return viewModelFactory
     }
 }

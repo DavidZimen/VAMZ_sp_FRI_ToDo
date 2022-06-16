@@ -19,6 +19,7 @@ class MainFuncViewModel(val osCislo: Int, val db: StudentDatabaseDao, applicatio
 
     lateinit var lists: LiveData<List<StudentWithLists?>>
     var items: LiveData<List<ListWithItems?>>? = null
+    var itemsWithDate: LiveData<MutableList<ToDoItemDC?>>? = null
 
     init {
         viewModelScope.launch {
@@ -26,6 +27,24 @@ class MainFuncViewModel(val osCislo: Int, val db: StudentDatabaseDao, applicatio
         }
     }
 
+    /**
+     * Nastaví do atribútu itemsWithDate item, ktorý majú daný dátum.
+     */
+    fun getItemsWithDate(date: Long) {
+        itemsWithDate?.value?.clear()
+
+        items?.value?.forEach { listWithItems ->
+            listWithItems?.toDoItems?.forEach { toDoItemDC ->
+                if (toDoItemDC.deadline == date) {
+                    itemsWithDate?.value?.add(toDoItemDC)
+                }
+            }
+        }
+    }
+
+    /**
+     * Odstráni list na danej pozícii v zozname listov
+     */
     fun removeListAtPosition(position: Int) {
         val id = lists.value?.get(0)?.lists?.get(position)?.listId
 
@@ -109,7 +128,6 @@ class MainFuncViewModel(val osCislo: Int, val db: StudentDatabaseDao, applicatio
      * nastavi hodnotu listId pre mazanie
      */
     private fun getListId(osCislo: Int, title: String) {
-        //TODO: Z nejakeho dovodu vracia null hodnotu
         viewModelScope.launch {
              db.getListId(osCislo, title)?.listId
         }
