@@ -8,6 +8,7 @@ import com.example.vamz_sp_fri_todo.database.StudentDatabaseDao
 import com.example.vamz_sp_fri_todo.database.data_classes.ToDoItemDC
 import com.example.vamz_sp_fri_todo.database.data_classes.ToDoListDC
 import com.example.vamz_sp_fri_todo.database.relations.ListWithItems
+import com.example.vamz_sp_fri_todo.database.relations.StudentWithItems
 import com.example.vamz_sp_fri_todo.database.relations.StudentWithLists
 import kotlinx.coroutines.launch
 import java.io.Serializable
@@ -19,7 +20,7 @@ class MainFuncViewModel(val osCislo: Int, val db: StudentDatabaseDao, applicatio
 
     lateinit var lists: LiveData<List<StudentWithLists?>>
     var items: LiveData<List<ListWithItems?>>? = null
-    var itemsWithDate: LiveData<MutableList<ToDoItemDC?>>? = null
+    var itemsWithDate: LiveData<List<ToDoItemDC?>>? = null
 
     init {
         viewModelScope.launch {
@@ -31,14 +32,8 @@ class MainFuncViewModel(val osCislo: Int, val db: StudentDatabaseDao, applicatio
      * Nastaví do atribútu itemsWithDate item, ktorý majú daný dátum.
      */
     fun getItemsWithDate(date: Long) {
-        itemsWithDate?.value?.clear()
-
-        items?.value?.forEach { listWithItems ->
-            listWithItems?.toDoItems?.forEach { toDoItemDC ->
-                if (toDoItemDC.deadline == date) {
-                    itemsWithDate?.value?.add(toDoItemDC)
-                }
-            }
+        viewModelScope.launch {
+            itemsWithDate = db.getItemsOfStudentWithDate(osCislo, date)
         }
     }
 

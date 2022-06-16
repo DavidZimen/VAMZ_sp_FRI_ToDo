@@ -6,6 +6,7 @@ import com.example.vamz_sp_fri_todo.database.data_classes.StudentDC
 import com.example.vamz_sp_fri_todo.database.data_classes.ToDoItemDC
 import com.example.vamz_sp_fri_todo.database.data_classes.ToDoListDC
 import com.example.vamz_sp_fri_todo.database.relations.ListWithItems
+import com.example.vamz_sp_fri_todo.database.relations.StudentWithItems
 import com.example.vamz_sp_fri_todo.database.relations.StudentWithLists
 
 /**
@@ -69,6 +70,14 @@ interface StudentDatabaseDao {
     @Transaction
     @Query("SELECT * FROM users_table WHERE osCislo = :osCislo")
     fun getStudentWithLists(osCislo: Int): LiveData<List<StudentWithLists?>>
+
+
+    /**
+     *vrati itemy daneho studenta ku danemu datumu
+     */
+    @Transaction
+    @Query("SELECT * FROM items_table WHERE student = :osCislo AND deadline = :date")
+    fun getItemsOfStudentWithDate(osCislo: Int, date: Long): LiveData<List<ToDoItemDC?>>
 
     /**
      * Vráti študenta so všetkými svojími zoznamami, ktoré vytvoril.

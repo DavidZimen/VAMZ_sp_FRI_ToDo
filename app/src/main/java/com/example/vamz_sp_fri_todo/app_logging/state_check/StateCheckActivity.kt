@@ -23,6 +23,8 @@ class StateCheckActivity : AppCompatActivity() {
         setContentView(R.layout.activity_state_check)
 
         val shrPref = getSharedPreferences("pref", Context.MODE_PRIVATE)
+
+
         val osCislo = shrPref.getInt("os_cislo", -1)
 
         //vytvorenie vpremennych pre pracu s datami

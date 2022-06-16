@@ -16,10 +16,12 @@ import com.example.vamz_sp_fri_todo.helper.Helper
 import com.example.vamz_sp_fri_todo.database.data_classes.ToDoItemDC
 import com.example.vamz_sp_fri_todo.mainFuncionality.MainFuncionalityActivity
 import com.example.vamz_sp_fri_todo.mainFuncionality.view_model.MainFuncViewModel
+import com.example.vamz_sp_fri_todo.student.Student
 import kotlinx.android.synthetic.main.fragment_add_item.view.*
 
 class AddItemFragment : Fragment() {
 
+    private lateinit var student: Student
     private lateinit var helper: Helper
     private lateinit var viewModel: MainFuncViewModel
 
@@ -32,6 +34,9 @@ class AddItemFragment : Fragment() {
 
         //inicializacie helper triedy
         helper = Helper()
+
+        //prebratie prihlaseneho studenta a inicializacia ViewModelu
+        student = this.activity?.intent?.getSerializableExtra("student") as Student
 
         //ziskanie instanciew viewModelu
         val viewModelFactory = this.requireActivity().defaultViewModelProviderFactory
@@ -54,6 +59,7 @@ class AddItemFragment : Fragment() {
             if (helper.checkEmptiness(editTextList)) {
                 if (listId != -1) {
                     item.listId = listId
+                    item.student = student.osCislo_
                     item.title = view.item_title.text.toString()
                     item.deadline = helper.convertStringToDate(view.item_date.text.toString())?.time!!
                     item.description = view.item_popis.text.toString()
