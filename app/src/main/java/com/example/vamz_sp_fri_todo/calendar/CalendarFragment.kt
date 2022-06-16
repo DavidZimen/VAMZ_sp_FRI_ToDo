@@ -52,7 +52,6 @@ class CalendarFragment : Fragment() {
         val adapter = createAdapter()
         view.calednar_rv.adapter = adapter
 
-
         view.calendarView.setOnDateChangeListener(
             CalendarView.OnDateChangeListener { view, year, month, dayOfMonth ->
                 var stringDate: String = ""
