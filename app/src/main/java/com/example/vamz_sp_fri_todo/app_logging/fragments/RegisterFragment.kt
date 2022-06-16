@@ -19,7 +19,7 @@ import com.example.vamz_sp_fri_todo.helper.Helper
 import com.example.vamz_sp_fri_todo.app_logging.view_model.LoggingViewModel
 import com.example.vamz_sp_fri_todo.database.data_classes.StudentDC
 import com.example.vamz_sp_fri_todo.mainFuncionality.MainFuncionalityActivity
-import com.example.vamz_sp_fri_todo.student.Student
+import com.example.vamz_sp_fri_todo.student_information.Student
 import kotlinx.android.synthetic.main.fragment_register.view.*
 
 /**

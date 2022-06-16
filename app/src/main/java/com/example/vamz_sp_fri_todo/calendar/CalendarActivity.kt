@@ -14,8 +14,8 @@ import com.example.vamz_sp_fri_todo.app_logging.LoggingActivity
 import com.example.vamz_sp_fri_todo.database.StudentDatabase
 import com.example.vamz_sp_fri_todo.mainFuncionality.MainFuncionalityActivity
 import com.example.vamz_sp_fri_todo.mainFuncionality.view_model.MainFuncViewModelFactory
-import com.example.vamz_sp_fri_todo.student.Student
-import com.example.vamz_sp_fri_todo.student.StudentInformationActivity
+import com.example.vamz_sp_fri_todo.student_information.Student
+import com.example.vamz_sp_fri_todo.student_information.StudentInformationActivity
 import kotlinx.android.synthetic.main.activity_calendar.*
 
 class CalendarActivity : AppCompatActivity() {

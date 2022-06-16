@@ -18,13 +18,11 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.example.vamz_sp_fri_todo.R
-import com.example.vamz_sp_fri_todo.database.StudentDatabase
 import com.example.vamz_sp_fri_todo.database.data_classes.ToDoListDC
 import com.example.vamz_sp_fri_todo.mainFuncionality.MainFuncionalityActivity
 import com.example.vamz_sp_fri_todo.mainFuncionality.rec_view_adapters.ToDoListDCAdapter
 import com.example.vamz_sp_fri_todo.mainFuncionality.view_model.MainFuncViewModel
-import com.example.vamz_sp_fri_todo.mainFuncionality.view_model.MainFuncViewModelFactory
-import com.example.vamz_sp_fri_todo.student.Student
+import com.example.vamz_sp_fri_todo.student_information.Student
 import kotlinx.android.synthetic.main.fragment_list.view.*
 
 /**

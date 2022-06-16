@@ -12,7 +12,7 @@ import com.example.vamz_sp_fri_todo.app_logging.view_model.LoggingViewModel
 import com.example.vamz_sp_fri_todo.app_logging.view_model.LoggingViewModelFactory
 import com.example.vamz_sp_fri_todo.database.StudentDatabase
 import com.example.vamz_sp_fri_todo.mainFuncionality.MainFuncionalityActivity
-import com.example.vamz_sp_fri_todo.student.Student
+import com.example.vamz_sp_fri_todo.student_information.Student
 
 /**
  * Fragment, ktorý sa podľa uloženeého stavu v Shared preferencis rozhodne,
@@ -27,7 +27,6 @@ class StateCheckActivity : AppCompatActivity() {
         setContentView(R.layout.activity_state_check)
 
         val shrPref = getSharedPreferences("pref", Context.MODE_PRIVATE)
-
 
         val osCislo = shrPref.getInt("os_cislo", -1)
 

@@ -1,4 +1,4 @@
-package com.example.vamz_sp_fri_todo.student
+package com.example.vamz_sp_fri_todo.student_information
 
 import com.example.vamz_sp_fri_todo.database.data_classes.StudentDC
 import java.io.Serializable

@@ -17,7 +17,7 @@ import com.example.vamz_sp_fri_todo.database.data_classes.ToDoListDC
         StudentDC::class,
         ToDoListDC::class,
         ToDoItemDC::class],
-    version = 4,
+    version = 5,
     exportSchema = false
 )
 abstract class StudentDatabase : RoomDatabase() {

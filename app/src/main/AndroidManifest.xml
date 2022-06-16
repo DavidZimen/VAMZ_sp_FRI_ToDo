@@ -23,7 +23,7 @@
         </activity>
 
         <activity
-            android:name=".student.StudentInformationActivity"
+            android:name=".student_information.StudentInformationActivity"
             android:exported="false" />
 
         <activity

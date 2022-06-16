@@ -1,4 +1,4 @@
-package com.example.vamz_sp_fri_todo.student
+package com.example.vamz_sp_fri_todo.student_information
 
 import android.content.Context
 import android.content.Intent
@@ -13,7 +13,6 @@ import com.example.vamz_sp_fri_todo.R
 import com.example.vamz_sp_fri_todo.app_logging.LoggingActivity
 import com.example.vamz_sp_fri_todo.calendar.CalendarActivity
 import com.example.vamz_sp_fri_todo.mainFuncionality.MainFuncionalityActivity
-import kotlinx.android.synthetic.main.activity_calendar.*
 import kotlinx.android.synthetic.main.activity_student_information_activiry.*
 
 class StudentInformationActivity : AppCompatActivity() {

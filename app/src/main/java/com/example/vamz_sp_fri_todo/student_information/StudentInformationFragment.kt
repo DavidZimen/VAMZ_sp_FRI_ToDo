@@ -1,4 +1,4 @@
-package com.example.vamz_sp_fri_todo.student
+package com.example.vamz_sp_fri_todo.student_information
 
 import android.os.Build
 import android.os.Bundle
@@ -8,13 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import com.example.vamz_sp_fri_todo.R
-import kotlinx.android.synthetic.main.fragment_register.view.*
-import kotlinx.android.synthetic.main.fragment_register.view.meno
-import kotlinx.android.synthetic.main.fragment_register.view.os_cislo
-import kotlinx.android.synthetic.main.fragment_register.view.priezvisko
 import kotlinx.android.synthetic.main.fragment_student_information.view.*
-import java.time.Instant
-import java.time.LocalDate
 import java.time.ZoneId
 import java.time.format.DateTimeFormatter
 

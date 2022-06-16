@@ -11,20 +11,18 @@ import android.widget.CalendarView
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import com.example.vamz_sp_fri_todo.R
 import com.example.vamz_sp_fri_todo.database.StudentDatabase
 import com.example.vamz_sp_fri_todo.helper.Helper
 import com.example.vamz_sp_fri_todo.mainFuncionality.rec_view_adapters.ToDoItemDCAdapter
 import com.example.vamz_sp_fri_todo.mainFuncionality.view_model.MainFuncViewModel
-import com.example.vamz_sp_fri_todo.student.Student
+import com.example.vamz_sp_fri_todo.student_information.Student
 import kotlinx.android.synthetic.main.fragment_calendar.view.*
 import kotlinx.android.synthetic.main.to_do_item_dialog.view.*
 import java.time.Instant
 import java.time.LocalDate
 import java.time.ZoneId
 import java.time.format.DateTimeFormatter
-import java.time.temporal.ChronoField
 
 /**
  * Zobrazí kalenár a podľa vybrateého dátumu zobrazí povinnosti ke danému dňu.
@@ -33,6 +31,7 @@ class CalendarFragment : Fragment() {
 
     private lateinit var viewModel: MainFuncViewModel
     private lateinit var student: Student
+
 
     @SuppressLint("NotifyDataSetChanged")
     @RequiresApi(Build.VERSION_CODES.O)

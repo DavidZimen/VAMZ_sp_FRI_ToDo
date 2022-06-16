@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".student.StudentInformationActivity">
+    tools:context=".student_information.StudentInformationActivity">
 
     <androidx.drawerlayout.widget.DrawerLayout
         android:id="@+id/drawer_layout"
@@ -28,7 +28,7 @@
                 android:layout_height="match_parent">
 
                 <fragment
-                    android:name="com.example.vamz_sp_fri_todo.student.StudentInformationFragment"
+                    android:name="com.example.vamz_sp_fri_todo.student_information.StudentInformationFragment"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     tools:layout="@layout/fragment_student_information">
