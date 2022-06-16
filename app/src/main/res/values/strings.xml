@@ -44,4 +44,6 @@
     <string name="calendar">Kalendár</string>
     <string name="account">Účet</string>
     <string name="deadline">Deadline</string>
+    <string name="upravit">Upraviť</string>
+    <string name="potvrdit_zmeny">Potvrdiť zmeny</string>
 </resources>
