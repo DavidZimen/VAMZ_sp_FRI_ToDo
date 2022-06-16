@@ -25,6 +25,10 @@ data class ToDoItemDC (
     @ColumnInfo(name = "description")
     var description: String = "",
 
+    /**
+     * 0 - povinnosť nebola nevykonaná
+     * 1 - povinnosť už bola vykonaná
+     */
     @ColumnInfo(name = "status")
     var status: Int = 0,
 

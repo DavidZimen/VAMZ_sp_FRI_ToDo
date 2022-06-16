@@ -10,6 +10,11 @@ import com.example.vamz_sp_fri_todo.R
 import com.example.vamz_sp_fri_todo.database.data_classes.ToDoItemDC
 import com.example.vamz_sp_fri_todo.database.data_classes.ToDoListDC
 
+/**
+ * Adaptér pre RecyclerView na zobraznie listov.
+ * Udržiava v sebe povinnosti z daného listu.
+ * Určuje aký vzhľad bude mať daný list.
+ */
 class ToDoListDCAdapter(private val clickListener: (ToDoListDC?) -> Unit) : RecyclerView.Adapter<ToDoListDCAdapter.ListViewHolder>() {
 
     var data = listOf<ToDoListDC?>()

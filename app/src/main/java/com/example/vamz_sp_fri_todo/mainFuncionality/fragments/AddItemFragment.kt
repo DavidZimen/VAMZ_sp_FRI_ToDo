@@ -19,6 +19,9 @@ import com.example.vamz_sp_fri_todo.mainFuncionality.view_model.MainFuncViewMode
 import com.example.vamz_sp_fri_todo.student.Student
 import kotlinx.android.synthetic.main.fragment_add_item.view.*
 
+/**
+ * Fragmet, kde sa zadávjú údaje na vytvorenie novej povinnosti.
+ */
 class AddItemFragment : Fragment() {
 
     private lateinit var student: Student

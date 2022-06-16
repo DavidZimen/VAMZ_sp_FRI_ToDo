@@ -14,6 +14,10 @@ import com.example.vamz_sp_fri_todo.database.StudentDatabase
 import com.example.vamz_sp_fri_todo.mainFuncionality.MainFuncionalityActivity
 import com.example.vamz_sp_fri_todo.student.Student
 
+/**
+ * Fragment, ktorý sa podľa uloženeého stavu v Shared preferencis rozhodne,
+ * ci sa ide na LoggingActivity ale priamo do MainFuncionalityActivity.
+ */
 class StateCheckActivity : AppCompatActivity() {
 
     private lateinit var viewModelFactory: LoggingViewModelFactory

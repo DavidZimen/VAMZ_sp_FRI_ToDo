@@ -27,7 +27,9 @@ import com.example.vamz_sp_fri_todo.mainFuncionality.view_model.MainFuncViewMode
 import com.example.vamz_sp_fri_todo.student.Student
 import kotlinx.android.synthetic.main.fragment_list.view.*
 
-
+/**
+ * Na fragmente sa zobrazia zoznamy pre prihleného študenta.
+ */
 class ListFragment : Fragment() {
 
     private lateinit var viewModel: MainFuncViewModel

@@ -26,6 +26,9 @@ import java.time.ZoneId
 import java.time.format.DateTimeFormatter
 import java.time.temporal.ChronoField
 
+/**
+ * Zobrazí kalenár a podľa vybrateého dátumu zobrazí povinnosti ke danému dňu.
+ */
 class CalendarFragment : Fragment() {
 
     private lateinit var viewModel: MainFuncViewModel

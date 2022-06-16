@@ -15,6 +15,7 @@ import java.io.Serializable
 
 /**
  * ViewModel pre MainFuncionalityActivity a fragmenty, kotré ku nej prislúchajú.
+ * Tiež pre CalendarActivity, a StudentInformationActivity.
  */
 class MainFuncViewModel(val osCislo: Int, val db: StudentDatabaseDao, application: Application) : AndroidViewModel(application), Serializable {
 

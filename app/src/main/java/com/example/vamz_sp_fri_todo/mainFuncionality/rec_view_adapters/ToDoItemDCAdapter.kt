@@ -18,6 +18,11 @@ import java.time.LocalDate
 import java.time.ZoneId
 import java.time.format.DateTimeFormatter
 
+/**
+ * Adaptér pre RecyclerView na zobraznie povinnosti.
+ * Udržiava v sebe povinnosti z daného listu.
+ * Určuje aký vzhľad bude mať daná povinnosť.
+ */
 class ToDoItemDCAdapter(private val clickListener: (ToDoItemDC?) -> Unit, private val viewModel: MainFuncViewModel) : RecyclerView.Adapter<ToDoItemDCAdapter.ItemViewHolder>(){
 
     var data = listOf<ToDoItemDC?>()
@@ -58,6 +63,7 @@ class ToDoItemDCAdapter(private val clickListener: (ToDoItemDC?) -> Unit, privat
            clickListener(item)
         }
 
+        //po zmene checkboxu sa nastavi aj to ci je povinnost uz vykonana alebo nie
         holder.checkBox.setOnCheckedChangeListener { buttonView, isChecked ->
             if (isChecked) {
                 1.also { item.status = it }

@@ -10,6 +10,11 @@ import com.example.vamz_sp_fri_todo.database.StudentDatabaseDao
 import com.example.vamz_sp_fri_todo.database.data_classes.StudentDC
 import kotlinx.coroutines.launch
 
+/**
+ * View model pre Logging, ktorý si drží informácie o študentovi
+ * a podľa toho overuje buď heslo daného študenta,
+ * alebo či pri registrácii už daný študent existuje.
+ */
 class LoggingViewModel(osCislo: Int?, val db: StudentDatabaseDao, application: Application) : AndroidViewModel(application) {
 
     lateinit var student: LiveData<StudentDC?>

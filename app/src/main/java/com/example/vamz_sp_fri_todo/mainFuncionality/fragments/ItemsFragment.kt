@@ -30,6 +30,9 @@ import java.time.LocalDate
 import java.time.ZoneId
 import java.time.format.DateTimeFormatter
 
+/**
+ * Fragment, kde sa zobrazia povinosti z vybraného zoznamu.
+ */
 class ItemsFragment : Fragment() {
 
     private lateinit var viewModel: MainFuncViewModel
@@ -51,7 +54,7 @@ class ItemsFragment : Fragment() {
         viewModel.getItemsOfList(listId)
 
         val activity = this.requireActivity() as MainFuncionalityActivity
-        activity.setActionBarTitle(viewModel.items?.value?.get(0)?.toDoList?.listName.toString())
+        activity.setActionBarTitle("Povinnosti zo zoznamu")
 
         //prebratie prihlaseneho studenta a inicializacia ViewModelu
         student = this.activity?.intent?.getSerializableExtra("student") as Student

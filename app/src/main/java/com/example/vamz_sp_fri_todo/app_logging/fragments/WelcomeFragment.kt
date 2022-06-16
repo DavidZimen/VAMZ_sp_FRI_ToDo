@@ -12,9 +12,7 @@ import kotlinx.android.synthetic.main.fragment_welcome.view.*
 
 
 /**
- * A simple [Fragment] subclass.
- * Use the [LoginFragment.newInstance] factory method to
- * create an instance of this fragment.
+ Privitaci fragment, ktorý umožní sa buď prihlásiť, alebo zaregistrovať.
  */
 class WelcomeFragment : Fragment() {
 
