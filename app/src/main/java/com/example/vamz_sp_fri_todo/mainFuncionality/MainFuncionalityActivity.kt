@@ -1,5 +1,6 @@
 package com.example.vamz_sp_fri_todo.mainFuncionality
 
+import android.content.Context
 import android.content.Intent
 import android.content.res.Configuration
 import android.os.Bundle
@@ -9,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
 import com.example.vamz_sp_fri_todo.R
+import com.example.vamz_sp_fri_todo.app_logging.LoggingActivity
 import com.example.vamz_sp_fri_todo.calendar.CalendarActivity
 import com.example.vamz_sp_fri_todo.database.StudentDatabase
 import com.example.vamz_sp_fri_todo.mainFuncionality.view_model.MainFuncViewModelFactory
@@ -49,6 +51,19 @@ class MainFuncionalityActivity : AppCompatActivity() {
                 R.id.nav_account -> {
                     intent = Intent(this, StudentInformationActivity::class.java)
                     intent.putExtra("student", student)
+                    startActivity(intent)
+                }
+
+                R.id.nav_logout -> {
+                    val shrPref = getSharedPreferences("pref", Context.MODE_PRIVATE)
+                    val editor = shrPref.edit()
+
+                    editor.apply {
+                        editor.putInt("os_cislo", -1)
+                        apply()
+                    }
+
+                    val intent = Intent(this, LoggingActivity::class.java)
                     startActivity(intent)
                 }
 

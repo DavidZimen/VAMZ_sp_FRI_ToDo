@@ -1,6 +1,7 @@
 package com.example.vamz_sp_fri_todo.app_logging.fragments
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
@@ -38,6 +39,9 @@ class RegisterFragment : Fragment() {
 
         val viewModelFactory = this.requireActivity().defaultViewModelProviderFactory
         viewModel = ViewModelProvider(this, viewModelFactory)[LoggingViewModel::class.java]
+
+        val shrPref = this.requireActivity().getSharedPreferences("pref", Context.MODE_PRIVATE)
+        val editor = shrPref.edit()
 
         view.datum.setOnClickListener(helper.setDatumClickListener(view, true, this, view.datum))
 
@@ -94,6 +98,12 @@ class RegisterFragment : Fragment() {
                             val passedStudent = Student(student)
                             intent.putExtra("student", passedStudent)
                             intent.putExtra("datum", view.datum.text.toString())
+
+                            editor.apply {
+                                editor.putInt("os_cislo", student.osCislo)
+                                apply()
+                            }
+
                             startActivity(intent)
                         } else {
                             editTextList[4].error = "Študent s daným číslom existuje. Prihláste sa alebo zadajne iné číslo."

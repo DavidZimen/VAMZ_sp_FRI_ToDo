@@ -10,28 +10,39 @@
         android:roundIcon="@drawable/logo_launcher"
         android:supportsRtl="true"
         android:theme="@style/Theme.VAMZ_sp_FRI_ToDo">
+
         <activity
-            android:name=".student.StudentInformationActivity"
-            android:exported="false" />
-        <activity
-            android:name=".calendar.CalendarActivity"
-            android:exported="false" />
-        <activity
-            android:name=".app_logging.LoggingActivity"
+            android:name=".app_logging.state_check.StateCheckActivity"
             android:exported="true"
-            android:theme="@style/Theme.VAMZ_sp_FRI_ToDo.NoActionBar"
-            tools:ignore="DuplicateActivity">
+            android:theme="@style/Theme.VAMZ_sp_FRI_ToDo.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".student.StudentInformationActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".calendar.CalendarActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".app_logging.LoggingActivity"
+            android:exported="true"
+            android:theme="@style/Theme.VAMZ_sp_FRI_ToDo.NoActionBar"
+            tools:ignore="DuplicateActivity">
+        </activity>
+
         <activity
             android:name=".mainFuncionality.MainFuncionalityActivity"
             android:exported="true"
             android:label="ToDo"
             tools:ignore="DuplicateActivity" />
+
     </application>
 
 </manifest>

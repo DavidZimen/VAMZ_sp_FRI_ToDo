@@ -17,7 +17,7 @@ class LoggingActivity : AppCompatActivity() {
         //vytvorenie vpremennych pre pracu s datami
         val app = requireNotNull(this).application
         val db = StudentDatabase.getInstance(app).studentDatabaseDao
-        viewModelFactory = LoggingViewModelFactory(db, app)
+        viewModelFactory = LoggingViewModelFactory(null, db, app)
     }
 
     override fun getDefaultViewModelProviderFactory(): LoggingViewModelFactory {

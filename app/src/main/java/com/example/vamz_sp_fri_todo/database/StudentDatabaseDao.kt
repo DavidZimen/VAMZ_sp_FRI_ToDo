@@ -47,7 +47,7 @@ interface StudentDatabaseDao {
      */
     @Transaction
     @Query("SELECT * FROM users_table WHERE osCislo = :key")
-    suspend fun getStudent(key: Int): StudentDC?
+    fun getStudent(key: Int): LiveData<StudentDC?>
 
     /**
      * Môže vracať aj null hodnoty, lebo dany kluc sa nemusí v tabuľke nachádzať

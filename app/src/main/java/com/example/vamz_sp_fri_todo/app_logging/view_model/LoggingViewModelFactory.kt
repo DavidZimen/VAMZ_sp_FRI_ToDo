@@ -9,11 +9,12 @@ import java.lang.IllegalArgumentException
 /**
  * ViewModelFactory trieda, ktorá vracia a ViewModel pre potreby Logging activity.
  */
-class LoggingViewModelFactory(private val dataSource: StudentDatabaseDao, private val application: Application) : ViewModelProvider.Factory {
+class LoggingViewModelFactory(private val osCislo: Int?, private val dataSource: StudentDatabaseDao, private val application: Application) : ViewModelProvider.Factory {
+
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
 
         if (modelClass.isAssignableFrom(LoggingViewModel::class.java)) {
-            return LoggingViewModel(dataSource, application) as T
+            return LoggingViewModel(osCislo, dataSource, application) as T
         }
         throw IllegalArgumentException("Neznámz ViewModel")
     }

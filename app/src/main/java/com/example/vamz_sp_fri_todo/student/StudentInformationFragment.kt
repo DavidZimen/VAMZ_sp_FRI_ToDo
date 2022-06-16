@@ -18,6 +18,9 @@ import java.time.LocalDate
 import java.time.ZoneId
 import java.time.format.DateTimeFormatter
 
+/**
+ * Fragment, ktorý zobrazí informácie o študentovi do aktivity.
+ */
 class StudentInformationFragment : Fragment() {
     private lateinit var student: Student
 
